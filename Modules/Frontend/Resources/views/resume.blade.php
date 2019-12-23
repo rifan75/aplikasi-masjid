@@ -54,7 +54,7 @@
                     <br>
                     <b>Resume :</b>
                     <div style="color:black">
-                    {{$resume->content}}
+                    {!!$resume->content!!}
                     </div>
                 </div>
                 <div class="col-md-1">

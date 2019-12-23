@@ -132,6 +132,7 @@ Route::prefix('admin')->group(function () {
      */
     Route::get('/resume', 'Lecture\ResumeController@index')->name('resume-admin');
     Route::get('/resume-create', 'Lecture\ResumeController@create')->name('resume-create');
+    Route::get('/resume/{slug}', 'Lecture\ResumeController@show')->name('resume-show');
     Route::post('/resume', 'Lecture\ResumeController@store')->name('resume-store');
     Route::get('/resume/{id}/edit', 'Lecture\ResumeController@edit')->name('resume-edit');
     Route::patch('/resume/{id}', 'Lecture\ResumeController@update')->name('resume-update');

@@ -41,8 +41,8 @@ class ResumeIndexResponse implements Responsable
         }else{
             $row['published'] = "<a href='#' onclick='editAct(\"".$resume->id."\",\"".$resume->published."\")'><i class='fa fa-ban' title='edit'></i></a>";
         }
-        $row['preview'] = '<a href="/admin/article/'.$resume->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::resume.preview").'</a>';
-        $row['action'] = "<a href='#' onclick='editForm(\"".$resume->id."\")'><i class='fa fa-pencil-square-o'></i></a>
+        $row['preview'] = '<a href="/admin/resume/'.$resume->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::resume.preview").'</a>';
+        $row['action'] = "<a href='/admin/resume/".$resume->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
                         &nbsp;&nbsp;&nbsp;
                     <a href='#' onclick='deleteForm(\"".$resume->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
         $data[] = $row;

@@ -26,9 +26,9 @@ class ShortResumeIndexResponse implements Responsable
     public function DataTable($id)
     {
         if ($id==0){
-            $resumes =  Resume::orderBy('date','DESC')->get();
+            $resumes =  Resume::where('published',true)->orderBy('date','DESC')->get();
         }else{
-            $resumes =  Resume::where('lecture_id',$id)->orderBy('date','DESC')->get();
+            $resumes =  Resume::where('published',true)->where('lecture_id',$id)->orderBy('date','DESC')->get();
         }
         
         $no = 0;

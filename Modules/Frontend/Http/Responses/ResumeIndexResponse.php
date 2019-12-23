@@ -13,7 +13,7 @@ class ResumeIndexResponse implements Responsable
         $datenow = \GeniusTS\HijriDate\Date::now()->format('l, d F Y');
         $slug = $request->slug;
         $resume =  Resume::where('slug',$slug)->first();
-        $resumerandoms = Resume::all()->random(3);
+        $resumerandoms = Resume::where('published',true)->get()->random(3);
         return view('frontend::resume',compact('datenow','resume','resumerandoms'));
     }
 

@@ -9,6 +9,10 @@
 .box-title {float: left;display: inline-block;font-size: 18px;line-height: 18px;font-weight: 400;margin: 0;
 	          padding: 0;margin-bottom: 8px;color: #fff
           }
+
+.note-group-select-from-files {
+  display: none;
+}
 </style>
 @stop
 
@@ -46,10 +50,10 @@
                 <input id="move" type="text" class="form-control" value="{{ old('move') }}" readonly>
                 <input id="scholar" type="hidden" class="form-control" name="scholar" readonly>
                 <input id="lecture_id" type="hidden" class="form-control" name="lecture_id" readonly>
-                <p style="color:red">{{ $errors->first('title') }}</p>
+                <p style="color:red">{{ $errors->first('scholar') }}</p>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" id="datediv">
                 <div class="form-group col-md-3">
                   <label for="date">@lang('admin::resume.date') : </label>
                   <div class='input-group date'>
@@ -67,21 +71,21 @@
               <div class="row">
                 <div class="form-group col-md-4" id="imagediv1">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_resume_1" src="{{asset('images/bismillah1.png')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_1" src="{{asset('images/bismillah1.png')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_1" id="img_resume_1"><br>
                   <p style="color:red">{{ $errors->first('img_resume_1') }}</p>
                 </div>
                 <div class="form-group col-md-4" id="imagediv2">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_resume_2" src="{{asset('images/bismillah2.jpg')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_2" src="{{asset('images/bismillah2.jpg')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_2" id="img_resume_2"><br>
                   <p style="color:red">{{ $errors->first('img_resume_2') }}</p>
                 </div>
                 <div class="form-group col-md-4" id="imagediv3">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_resume_3" src="{{asset('images/bismillah3.jpg')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_3" src="{{asset('images/bismillah3.jpg')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_3" id="img_resume_3"><br>
                   <p style="color:red">{{ $errors->first('img_resume_2') }}</p>
@@ -102,7 +106,7 @@
 							<input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}">
               </div>
               <div class="col-md-3">
-              <a href="#" onclick="convertToSlug()" class="btn btn-success"role="button">Generate Slug</a>
+              <a href="#datediv" onclick="convertToSlug()" class="btn btn-success"role="button">Generate Slug</a>
               </div>
               </div>
               <p style="color:red">{{ $errors->first('slug') }}</p>
@@ -139,22 +143,47 @@
 <script type="text/javascript" src="{{asset('js/admin/bootstrap-datetimepicker.js')}}" ></script>
 <script type="text/javascript">
 $('#content').summernote({height: 350});
-function readURL(input) {
+function readURL1(input) {
               if (input.files && input.files[0]) {
                   var reader = new FileReader();
                   reader.onload = function (e) {
-                      $('#image_baru').attr('src', e.target.result);
+                      $('#img_1').attr('src', e.target.result);
                   }
                   reader.readAsDataURL(input.files[0]);
 
               }
           }
-$('#picture').change(function(){
-    readURL(this);
-    $('#newpicture').remove();
-    $('#image_picture').append('<div class="form-group" id="newpicture">'+
-                                    '<img id="image_baru" src="" height="150" width="150"></img><br><br>'+
-																'</div>');
+function readURL2(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img_2').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+
+    }
+}
+function readURL3(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img_3').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+
+    }
+}
+
+$('#img_resume_1').change(function(){
+    readURL1(this);
+});
+
+$('#img_resume_2').change(function(){
+    readURL2(this);
+});
+
+$('#img_resume_3').change(function(){
+    readURL3(this);
 });
 
 function convertToSlug()

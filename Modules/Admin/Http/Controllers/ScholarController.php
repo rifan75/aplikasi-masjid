@@ -53,7 +53,7 @@ class ScholarController extends Controller
 
         if ($request->hasFile('picture')) 
         {
-          $scholar->addMediaFromRequest('scholar')->toMediaCollection('scholar','s3');
+          $scholar->addMediaFromRequest('picture')->toMediaCollection('scholar','s3');
         }
 
         return new ScholarProcessResponse();

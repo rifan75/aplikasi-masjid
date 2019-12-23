@@ -18,6 +18,7 @@ return [
     'resume_input' => 'Input Resume Kajian',
     'resume_add' => 'Tambah Resume Kajian',
     'resume_edit' => 'Edit Resume Kajian',
+    'resume_back' => "Kembali ke Admin Resume",
 
     'writer' => 'Penulis',
     'video' => 'YouTube Link',

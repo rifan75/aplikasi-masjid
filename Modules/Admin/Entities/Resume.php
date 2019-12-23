@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Cohensive\Embed\Facades\Embed;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use DateTime;
 
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -17,6 +18,7 @@ class Resume extends Model implements HasMedia
     protected $table = "content_lecture";
     protected $fillable = [
         'user_id',
+        'lecture_id',
         'scholar',
         'date',
         'title',
@@ -39,6 +41,13 @@ class Resume extends Model implements HasMedia
         ->translatedFormat('l, d F Y');
     }
 
+    public function getDateeditAttribute()
+    {
+        return Carbon::parse($this->attributes['date'])
+        ->format('d F Y');
+    }
+
+
     public function getHijrAttribute()
     {
         return \GeniusTS\HijriDate\Hijri::convertToHijri($this->attributes['date'])
@@ -54,6 +63,11 @@ class Resume extends Model implements HasMedia
 
         $embed->setAttribute(['width' => 400]);
         return $embed->getHtml();
+    }
+
+    public function setDateAttribute($value)
+    {  
+        $this->attributes['date'] = DateTime::createFromFormat('d M Y', $value)->format('Y-m-d');
     }
 
     public function registerMediaCollections()
@@ -72,5 +86,10 @@ class Resume extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo('Modules\Admin\Entities\User','user_id','id');
+    }
+
+    public function lecture()
+    {
+        return $this->belongsTo('Modules\Admin\Entities\Lecture','lecture_id','id');
     }
 }

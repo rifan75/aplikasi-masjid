@@ -81,6 +81,10 @@ class AdminServiceProvider extends ServiceProvider
             'Modules\Admin\Http\Repos\User\ProcessMyUserRepoInterface',
             'Modules\Admin\Http\Repos\User\ProcessMyUserRepo'
             );
+        $this->app->bind(
+            'Modules\Admin\Http\Repos\Lecture\ProcessResumeRepoInterface',
+            'Modules\Admin\Http\Repos\Lecture\ProcessResumeRepo'
+            );
     }
 
     /**

@@ -31,9 +31,9 @@ class ResumeCreateResponse implements Responsable
         $row['scholar'] = $lecture->scholar;
         if ($lecture->type)
         {
-            $row['move'] = $lecture->scholar.' - '.$lecture->day.', '.$lecture->from.' s.d '.$lecture->untill;
+            $row['move'] = $lecture->scholar.' - '.$lecture->daytrans.', '.$lecture->from.' s.d '.$lecture->untill;
             $row['content'] = '<a href="#" id="clickresumerow" style="color:black"><b>'.$lecture->scholar.' || '.$lecture->category.'</b><br>
-                            Kajian Rutin Setiap :<br><b>'.$lecture->day.', '.$lecture->from.' s.d '.$lecture->untill.'</b><br>
+                            Kajian Rutin Setiap :<br><b>'.$lecture->daytrans.', '.$lecture->from.' s.d '.$lecture->untill.'</b><br>
                             Status : '.$lecture->status.'</a>';
         }
         else

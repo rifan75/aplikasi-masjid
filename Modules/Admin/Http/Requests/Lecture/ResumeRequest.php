@@ -32,6 +32,7 @@ class ResumeRequest extends FormRequest
                 'title' => 'required',
                 'slug' => ['required','unique:resume,slug,' .$this->route('id')],
                 'content' => 'required',
+                'scholar' => 'required',
               ];
         }
 
@@ -39,6 +40,7 @@ class ResumeRequest extends FormRequest
         'title' => 'required',
         'slug' => 'required',
         'content' => 'required',
+        'scholar' => 'required',
         ];
     }
     /**

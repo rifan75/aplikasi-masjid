@@ -26,6 +26,6 @@ class ResumeProcessResponse implements Responsable
                 flash()->success('Success', 'Kajian sudah ditambah');
             }
         }
-        return redirect()->route('resume');
+        return redirect()->route('resume-admin');
     }
 }

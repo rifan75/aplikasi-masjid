@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers\Lecture;
 use Modules\Admin\Http\Controllers\Controller;
 use Modules\Admin\Http\Responses\Lecture\ResumeIndexResponse;
 use Modules\Admin\Http\Responses\Lecture\ResumeCreateResponse;
+use Modules\Admin\Http\Responses\Lecture\ResumeShowResponse;
 use Modules\Admin\Http\Responses\Lecture\ResumeEditResponse;
 use Modules\Admin\Http\Responses\Lecture\ResumeProcessResponse;
 use Modules\Admin\Http\Requests\Lecture\ResumeRequest;
@@ -29,14 +30,29 @@ class ResumeController extends Controller
 
     public function store(ResumeRequest $request, ProcessResumeRepoInterface $repo)
     {
-        $repo->createResumeDefault($request);
+        $resume = $repo->createResumeDefault($request);
+       
+        if ($request->hasFile('img_resume_1')) 
+        {
+          $resume->addMediaFromRequest('img_resume_1')->toMediaCollection('img_resume_1','s3');
+        }
+
+        if ($request->hasFile('img_resume_2')) 
+        {
+          $resume->addMediaFromRequest('img_resume_2')->toMediaCollection('img_resume_2','s3');
+        }
+
+        if ($request->hasFile('img_resume_3')) 
+        {
+          $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
+        }
 
         return new ResumeProcessResponse();
     }
 
-    public function show($id)
+    public function show(ResumeShowResponse $response)
     {
-        //
+        return $response;
     }
 
     public function edit($id)
@@ -46,7 +62,22 @@ class ResumeController extends Controller
 
     public function update(ResumeRequest $request, ProcessResumeRepoInterface $repo, $id)
     {
-        $repo->updateResumeDefault($request, $id);
+        $resume = $repo->updateResumeDefault($request, $id);
+
+        if ($request->hasFile('img_resume_1')) 
+        {
+          $resume->addMediaFromRequest('img_resume_1')->toMediaCollection('img_resume_1','s3');
+        }
+
+        if ($request->hasFile('img_resume_2')) 
+        {
+          $resume->addMediaFromRequest('img_resume_2')->toMediaCollection('img_resume_2','s3');
+        }
+
+        if ($request->hasFile('img_resume_3')) 
+        {
+          $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
+        }
 
         return new ResumeProcessResponse();
     }
