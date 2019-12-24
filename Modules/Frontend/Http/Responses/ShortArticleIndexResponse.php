@@ -39,10 +39,10 @@ class ShortArticleIndexResponse implements Responsable
     public function DataTable($month,$year)
     {
         if ($month==0 && $year==0){
-            $articles =  Article::orderBy('created_at','DESC')->get();
+            $articles =  Article::where('published',true)->orderBy('created_at','DESC')->get();
         }else{
             $date = date_parse($month);
-            $articles =  Article::whereYear('created_at', '=', $year)
+            $articles =  Article::where('published',true)->whereYear('created_at', '=', $year)
             ->whereMonth('created_at', '=', $date['month'])
             ->orderBy('created_at','DESC')->get();
         }
@@ -53,7 +53,7 @@ class ShortArticleIndexResponse implements Responsable
             $no ++;
             $row = array();
             $row['no'] = $no;
-            $row['content'] = '<a href="/article/'.$article->slug.'" style="color:black"><b>'.$article->user.'
+            $row['content'] = '<a href="/article/'.$article->slug.'" style="color:black"><b>'.$article->user->name.'
                                <br>'.$article->date.' || '.$article->hijr.'</b><br><h3>'
                                 .$article->title.'</h3>'.$article->short_content.'</a>';
             $data[] = $row;

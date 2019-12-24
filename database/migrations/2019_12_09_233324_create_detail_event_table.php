@@ -14,7 +14,7 @@ class CreateDetailEventTable extends Migration
     public function up()
     {
         Schema::create('detail_event', function (Blueprint $table) {
-            $table->bigIncrements('id');$table->string('name');
+            $table->bigIncrements('id');
             $table->bigInteger('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('event'); 
             $table->text('note')->nullable();

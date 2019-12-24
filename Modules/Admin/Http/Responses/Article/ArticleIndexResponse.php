@@ -39,7 +39,7 @@ class ArticleIndexResponse implements Responsable
             $row['published'] = "<a href='#' onclick='editAct(\"".$article->id."\",\"".$article->published."\")'><i class='fa fa-ban' title='edit'></i></a>";
         }
         $row['preview'] = '<a href="/admin/article/'.$article->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::article.preview").'</a>';
-        $row['action'] = "<a href='#' onclick='editForm(\"".$article->id."\")'><i class='fa fa-pencil-square-o'></i></a>
+        $row['action'] = "<a href='/admin/article/".$article->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
                         &nbsp;&nbsp;&nbsp;
                     <a href='#' onclick='deleteForm(\"".$article->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
         $data[] = $row;

@@ -17,12 +17,14 @@ return [
     'article_input' => 'Input Artikel',
     'article_add' => 'Tambah Artikel',
     'article_edit' => 'Edit Artikel',
+    'article_back' => "Kembali ke Admin Artikel",
 
     'writer' => 'Penulis',
     'video' => 'Video',
     'slug' => 'Slug',
     'published' => 'Publish',
     'preview' => 'Preview',
+    'content' => 'Artikel',
 
     'from' => 'dr Jam',
     'untill' => 's.d. Jam',

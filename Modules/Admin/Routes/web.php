@@ -143,10 +143,23 @@ Route::prefix('admin')->group(function () {
      */
     Route::get('/article', 'ArticleController@index')->name('article-admin');
     Route::get('/article-create', 'ArticleController@create')->name('article-create');
+    Route::get('/article/{slug}', 'ArticleController@show')->name('article-show');
     Route::post('/article', 'ArticleController@store')->name('article-store');
     Route::get('/article/{id}/edit', 'ArticleController@edit')->name('article-edit');
     Route::patch('/article/{id}', 'ArticleController@update')->name('article-update');
     Route::delete('/article/{id}', 'ArticleController@delete')->name('article-delete');
+
+    /**
+     * DetailEvent Routes
+     */
+    Route::get('/detailevent', 'Event\DetailEventController@index')->name('detailevent-admin');
+    Route::get('/detailevent-create', 'Event\DetailEventController@create')->name('detailevent-create');
+    Route::get('/detailevent/{id}', 'Event\DetailEventController@show')->name('detailevent-show');
+    Route::post('/detailevent', 'Event\DetailEventController@store')->name('detailevent-store');
+    Route::get('/detailevent/{id}/edit', 'Event\DetailEventController@edit')->name('detailevent-edit');
+    Route::patch('/detailevent/{id}', 'Event\DetailEventController@update')->name('detailevent-update');
+    Route::delete('/detailevent/{id}', 'Event\DetailEventController@delete')->name('detailevent-delete');
+
 
 });
 

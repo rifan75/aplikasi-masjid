@@ -2,7 +2,7 @@
 namespace Modules\Frontend\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Frontend\Entities\Resume;
+use Modules\Admin\Entities\Resume;
 
 class ResumeIndexResponse implements Responsable
 {
@@ -12,7 +12,7 @@ class ResumeIndexResponse implements Responsable
     {
         $datenow = \GeniusTS\HijriDate\Date::now()->format('l, d F Y');
         $slug = $request->slug;
-        $resume =  Resume::where('slug',$slug)->first();
+        $resume =  Resume::where('slug',$slug)->where('published',true)->first();
         $resumerandoms = Resume::where('published',true)->get()->random(3);
         return view('frontend::resume',compact('datenow','resume','resumerandoms'));
     }

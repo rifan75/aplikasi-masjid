@@ -88,7 +88,7 @@
                   <img id="img_3" src="{{asset('images/bismillah3.jpg')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_3" id="img_resume_3"><br>
-                  <p style="color:red">{{ $errors->first('img_resume_2') }}</p>
+                  <p style="color:red">{{ $errors->first('img_resume_3') }}</p>
                 </div>
               </div>
               <div class="row">

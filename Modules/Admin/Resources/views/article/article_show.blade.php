@@ -9,13 +9,14 @@
                 <div class="col-md-1">
                 </div>
                 <div class="col-md-10" style="color:black">
+                <a href="{{route('article-admin')}}" id="createbutton" type="button" class=" btn-sm btn-primary" style="margin-bottom:5px">@lang("admin::article.article_back")</a><br><br>
                 <h1>{{$article->title}}</h1><br>
                     <b>{{$article->user->name}}</b><br>
                     <b>{{$article->date}} || {{$article->hijr}}</b><br>
                     <br>
                     <div class="row">
                         <div class="col-md-12" style="text-align:right">
-                            <img src="{{$article->getFirstMediaUrl('article_head')==null ? asset('images/article_head1.png') : $article->getFirstMediaUrl('img_1')}}" style="width:50%;">
+                            <img src="{{$article->getFirstMediaUrl('article_head')==null ? asset('images/article_head1.png') : $article->getFirstMediaUrl('article_head')}}" style="width:50%;">
                         </div>
                     </div>
                     <br>

@@ -31,19 +31,19 @@
                             <!-- Full-width images with number and caption text -->
                                 <div class="mySlides" style="text-align:center">
                                 <div class="numbertext">1 / 3</div>
-                                <img src="{{$resume->getFirstMediaUrl('img_1')==null ? asset('images/bismillah1.png') : $resume->getFirstMediaUrl('img_1')}}" style="width:300px;height:225px;">
+                                <img src="{{$resume->getFirstMediaUrl('img_resume_1')==null ? asset('images/bismillah1.png') : $resume->getFirstMediaUrl('img_resume_1')}}" style="width:300px;height:225px;">
                                 <div class="text">Caption Text</div>
                                 </div>
 
                                 <div class="mySlides" style="text-align:center">
                                 <div class="numbertext">2 / 3</div>
-                                <img src="{{$resume->getFirstMediaUrl('img_2')==null ? asset('images/bismillah2.jpg') : $resume->getFirstMediaUrl('img_2')}}" style="width:300px;height:225px;">
+                                <img src="{{$resume->getFirstMediaUrl('img_resume_2')==null ? asset('images/bismillah2.jpg') : $resume->getFirstMediaUrl('img_resume_2')}}" style="width:300px;height:225px;">
                                 <div class="text">Caption Two</div>
                                 </div>
 
                                 <div class="mySlides" style="text-align:center">
                                 <div class="numbertext">3 / 3</div>
-                                <img src="{{$resume->getFirstMediaUrl('img_3')==null ? asset('images/bismillah3.jpg') : $resume->getFirstMediaUrl('img_3')}}" style="width:300px;height:225px;">
+                                <img src="{{$resume->getFirstMediaUrl('img_resume_3')==null ? asset('images/bismillah3.jpg') : $resume->getFirstMediaUrl('img_resume_3')}}" style="width:300px;height:225px;">
                                 <div class="text">Caption Three</div>
                                 </div>
 

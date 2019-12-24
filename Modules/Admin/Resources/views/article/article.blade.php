@@ -15,7 +15,7 @@
 <section class="content">
   <div class="row">
     <div class="col-md-12">
-    <a href="/assetmain/create" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::article.article_add")</a>
+    <a href="{{route('article-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::article.article_add")</a>
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">@lang("admin::article.article_list")</h3>

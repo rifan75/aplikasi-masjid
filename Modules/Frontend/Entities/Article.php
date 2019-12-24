@@ -50,4 +50,11 @@ class Article extends Model implements HasMedia
         ->format('d F Y');
     }
     
+    /**
+     * Relationship.
+     */
+    public function user()
+    {
+        return $this->belongsTo('Modules\Admin\Entities\User','user_id','id');
+    }
 }

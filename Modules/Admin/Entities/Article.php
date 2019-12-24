@@ -26,7 +26,6 @@ class Article extends Model implements HasMedia
     {
         $this->addMediaCollection('article_head')
                 ->singleFile();
-        $this->addMediaCollection('article');
     }
 
     // protected $appends = [

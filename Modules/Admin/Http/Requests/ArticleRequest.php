@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Admin\Http\Requests\Lecture;
+namespace Modules\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 use Illuminate\Validation\Rule;
 
-class ResumeRequest extends FormRequest
+class ArticleRequest extends FormRequest
 {
     use SanitizesInput;
     /**
@@ -30,23 +30,19 @@ class ResumeRequest extends FormRequest
             
             return [
                 'title' => 'required',
-                'slug' => ['required','unique:content_lecture,slug,' .$this->route('id')],
+                'slug' => ['required','unique:article,slug,' .$this->route('id')],
                 'content' => 'required',
-                'scholar' => 'required',
-                'img_resume_1' => 'mimes:jpeg,bmp,png|max:1024',
-                'img_resume_2' => 'mimes:jpeg,bmp,png|max:1024',
-                'img_resume_3' => 'mimes:jpeg,bmp,png|max:1024',
+                'category' => 'required',
+                'img_article_1' => 'mimes:jpeg,bmp,png|max:1024',
               ];
         }
 
         return [
         'title' => 'required',
-        'slug' => 'required|unique:content_lecture',
+        'slug' => 'required|unique:article',
         'content' => 'required',
-        'scholar' => 'required',
-        'img_resume_1' => 'mimes:jpeg,bmp,png|max:1024',
-        'img_resume_2' => 'mimes:jpeg,bmp,png|max:1024',
-        'img_resume_3' => 'mimes:jpeg,bmp,png|max:1024',
+        'category' => 'required',
+        'img_article_1' => 'mimes:jpeg,bmp,png|max:1024',
         ];
     }
     /**

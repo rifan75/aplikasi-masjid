@@ -3,10 +3,12 @@
 namespace Modules\Admin\Http\Controllers;
 
 use Modules\Admin\Http\Responses\Article\ArticleIndexResponse;
+use Modules\Admin\Http\Responses\Article\ArticleCreateResponse;
+use Modules\Admin\Http\Responses\Article\ArticleShowResponse;
 use Modules\Admin\Http\Responses\Article\ArticleEditResponse;
 use Modules\Admin\Http\Responses\Article\ArticleProcessResponse;
-use Modules\Admin\Http\Requests\Article\ArticleRequest;
-use Modules\Admin\Http\Repos\Article\ProcessArticleRepoInterface;
+use Modules\Admin\Http\Requests\ArticleRequest;
+use Modules\Admin\Http\Repos\ProcessArticleRepoInterface;
 
 class ArticleController extends Controller
 {
@@ -15,26 +17,31 @@ class ArticleController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(ArticleIndexResponse $index)
+    public function index(ArticleIndexResponse $response)
     {
-        return $index;
+        return $response;
     }
 
-    public function create()
+    public function create(ArticleCreateResponse $response)
     {
-        //
+        return $response;
     }
 
     public function store(ArticleRequest $request, ProcessArticleRepoInterface $repo)
     {
-        $repo->createArticleDefault($request);
+        $article = $repo->createArticleDefault($request);
+
+        if ($request->hasFile('img_article_1')) 
+        {
+          $article->addMediaFromRequest('img_article_1')->toMediaCollection('article_head','s3');
+        }
 
         return new ArticleProcessResponse();
     }
 
-    public function show($id)
+    public function show(ArticleShowResponse $response)
     {
-        //
+        return $response;
     }
 
     public function edit($id)
@@ -44,7 +51,12 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, ProcessArticleRepoInterface $repo, $id)
     {
-        $repo->updateArticleDefault($request, $id);
+        $article = $repo->updateArticleDefault($request, $id);
+
+        if ($request->hasFile('img_article_1')) 
+        {
+          $article->addMediaFromRequest('img_article_1')->toMediaCollection('article_head','s3');
+        }
 
         return new ArticleProcessResponse();
     }

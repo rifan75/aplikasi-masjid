@@ -50,11 +50,13 @@ $factory->define(Lecture::class, function ($faker) {
 
 $factory->define(Resume::class, function ($faker) {
     $scholar = Scholar::all()->random()->name;
+    $dt = $faker->dateTime($max = 'now');
+    $date = $dt->format("d M Y");
     return [
         'user_id' => User::all()->random()->id,
         'scholar' => $scholar,
         'lecture_id' => Lecture::where('scholar',$scholar)->get()->random()->id,
-        'date' => $faker->dateTime($max = 'now'),
+        'date' => $date,
         'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'slug' => $faker->slug,
         'content' => $faker->paragraphs($nb = 6, $asText = true),

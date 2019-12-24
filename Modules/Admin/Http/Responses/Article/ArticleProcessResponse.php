@@ -26,6 +26,6 @@ class ArticleProcessResponse implements Responsable
                 flash()->success('Success', 'Artikel sudah ditambah');
             }
         }
-        return redirect()->route('article');
+        return redirect()->route('article-admin');
     }
 }

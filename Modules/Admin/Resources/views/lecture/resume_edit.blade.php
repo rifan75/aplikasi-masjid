@@ -41,9 +41,9 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="container-fluid add-product">
-          <form id="resumeform" enctype="multipart/form-data" action="{{ route('resume-store') }}" method="post" data-toggle="validator">
+          <form id="resumeform" enctype="multipart/form-data" action="{{ route('resume-update',['id' => $resume->id]) }}" method="post" data-toggle="validator">
               {{csrf_field()}}
-              <input id="inputhidden" type='hidden' name='_method' value='POST'>
+              <input id="inputhidden" type='hidden' name='_method' value='PATCH'>
               <div class="row">
                 <div class="form-group col-md-12">
                 <label for="move" class=" control-label">@lang('admin::resume.lecture')</label>
@@ -73,24 +73,24 @@
               <div class="row">
                 <div class="form-group col-md-4" id="imagediv1">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_1" src="{{asset('images/bismillah1.png')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_1" src="{{$resume->getFirstMediaUrl('img_resume_1')==null ? asset('images/bismillah1.png') : $resume->getFirstMediaUrl('img_resume_1')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_1" id="img_resume_1"><br>
                   <p style="color:red">{{ $errors->first('img_resume_1') }}</p>
                 </div>
                 <div class="form-group col-md-4" id="imagediv2">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_2" src="{{asset('images/bismillah2.jpg')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_2" src="{{$resume->getFirstMediaUrl('img_resume_2')==null ? asset('images/bismillah2.jpg') : $resume->getFirstMediaUrl('img_resume_2')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_2" id="img_resume_2"><br>
                   <p style="color:red">{{ $errors->first('img_resume_2') }}</p>
                 </div>
                 <div class="form-group col-md-4" id="imagediv3">
                   <p>Size Max : 1 MB<p>
-                  <img id="img_3" src="{{asset('images/bismillah3.jpg')}}" style="margin-right:10px" width="100%" height="200px">
+                  <img id="img_3" src="{{$resume->getFirstMediaUrl('img_resume_3')==null ? asset('images/bismillah3.jpg') : $resume->getFirstMediaUrl('img_resume_3')}}" style="margin-right:10px" width="100%" height="200px">
                   <br><br>
                   <input type="file" name="img_resume_3" id="img_resume_3"><br>
-                  <p style="color:red">{{ $errors->first('img_resume_2') }}</p>
+                  <p style="color:red">{{ $errors->first('img_resume_3') }}</p>
                 </div>
               </div>
               <div class="row">
@@ -123,7 +123,7 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="@lang('admin::resume.resume_add')">
+                  <input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="@lang('admin::resume.resume_edit')">
                 </div>
               </div>
           </form>

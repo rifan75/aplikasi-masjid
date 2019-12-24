@@ -7,7 +7,7 @@
     <li>
       <a href="{{route('article-admin')}}"><i class="fa fa-book"></i> <span>@lang('admin::sidebarmenu.article')</span></a>
     </li>
-    <li><a href="/user"><i class="fa fa-anchor"></i> <span>@lang('admin::sidebarmenu.record_event')</span></a></li>
+    <li><a href="{{route('detailevent-admin')}}"><i class="fa fa-anchor"></i> <span>@lang('admin::sidebarmenu.record_event')</span></a></li>
     <li class="treeview">
         <a href="#"><i class="fa fa-database"></i> <span>@lang('admin::sidebarmenu.development')</span>
         <span class="pull-right-container">

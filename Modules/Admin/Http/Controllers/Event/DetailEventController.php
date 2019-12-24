@@ -1,36 +1,36 @@
 <?php
 
-namespace Modules\Admin\Http\Controllers\Lecture;
+namespace Modules\Admin\Http\Controllers\Event;
 
 use Modules\Admin\Http\Controllers\Controller;
-use Modules\Admin\Http\Responses\Lecture\ResumeIndexResponse;
-use Modules\Admin\Http\Responses\Lecture\ResumeCreateResponse;
-use Modules\Admin\Http\Responses\Lecture\ResumeShowResponse;
-use Modules\Admin\Http\Responses\Lecture\ResumeEditResponse;
-use Modules\Admin\Http\Responses\Lecture\ResumeProcessResponse;
-use Modules\Admin\Http\Requests\Lecture\ResumeRequest;
-use Modules\Admin\Http\Repos\Lecture\ProcessResumeRepoInterface;
+use Modules\Admin\Http\Responses\Event\DetailEventIndexResponse;
+use Modules\Admin\Http\Responses\Event\DetailEventCreateResponse;
+use Modules\Admin\Http\Responses\Event\DetailEventShowResponse;
+use Modules\Admin\Http\Responses\Event\DetailEventEditResponse;
+use Modules\Admin\Http\Responses\Event\DetailEventProcessResponse;
+use Modules\Admin\Http\Requests\Event\DetailEventRequest;
+use Modules\Admin\Http\Repos\Event\ProcessDetailEventRepoInterface;
 
-class ResumeController extends Controller
+class DetailEventController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index(ResumeIndexResponse $response)
+    public function index(DetailEventIndexResponse $response)
     {
         return $response;
     }
 
-    public function create(ResumeCreateResponse $response)
+    public function create(DetailEventCreateResponse $response)
     {
         return $response;
     }
 
-    public function store(ResumeRequest $request, ProcessResumeRepoInterface $repo)
+    public function store(DetailEventRequest $request, ProcessDetailEventRepoInterface $repo)
     {
-        $resume = $repo->createResumeDefault($request);
+        $resume = $repo->createDetailEventDefault($request);
        
         if ($request->hasFile('img_resume_1')) 
         {
@@ -47,22 +47,22 @@ class ResumeController extends Controller
           $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
         }
 
-        return new ResumeProcessResponse();
+        return new DetailEventProcessResponse();
     }
 
-    public function show(ResumeShowResponse $response)
+    public function show(DetailEventShowResponse $response)
     {
         return $response;
     }
 
     public function edit($id)
     {
-        return new ResumeEditResponse($id);
+        return new DetailEventEditResponse($id);
     }
 
-    public function update(ResumeRequest $request, ProcessResumeRepoInterface $repo, $id)
+    public function update(DetailEventRequest $request, ProcessDetailEventRepoInterface $repo, $id)
     {
-        $resume = $repo->updateResumeDefault($request, $id);
+        $resume = $repo->updateDetailEventDefault($request, $id);
 
         if ($request->hasFile('img_resume_1')) 
         {
@@ -79,11 +79,11 @@ class ResumeController extends Controller
           $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
         }
 
-        return new ResumeProcessResponse();
+        return new DetailEventProcessResponse();
     }
 
-    public function delete(ProcessResumeRepoInterface $repo, $id)
+    public function delete(ProcessDetailEventRepoInterface $repo, $id)
     {
-        $repo->deleteResumeDefault($id);
+        $repo->deleteDetailEventDefault($id);
     }
 }
