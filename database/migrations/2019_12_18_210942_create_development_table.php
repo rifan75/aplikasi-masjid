@@ -16,9 +16,8 @@ class CreateDevelopmentTable extends Migration
         Schema::create('development', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('note')->nullable();
-            $table->json('team')->nullable();
-            $table->json('planning')->nullable();
+            $table->string('slug');
+            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

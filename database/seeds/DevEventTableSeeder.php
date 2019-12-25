@@ -13,7 +13,6 @@ class DevEventTableSeeder extends Seeder
      */
     public function run()
     {
-            factory(Dev::class)->create();
             factory(Event::class,5)->create();
     }
 }

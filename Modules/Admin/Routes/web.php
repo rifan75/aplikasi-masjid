@@ -42,6 +42,10 @@ Route::prefix('admin')->group(function () {
      */
     // Route::patch('/activateuser/{id}/{act}', 'User\ActivateController@updateuser');
     /**
+     * Temporary Media Routes
+     */
+    Route::post('/media-temp', 'MediaTempController@store')->name('tempmedia-store');
+    /**
      * Password Routes
      */
     Route::patch('/passwd/{id}', 'User\PasswordController@update')->name('password-update');
@@ -154,7 +158,7 @@ Route::prefix('admin')->group(function () {
      */
     Route::get('/detailevent', 'Event\DetailEventController@index')->name('detailevent-admin');
     Route::get('/detailevent-create', 'Event\DetailEventController@create')->name('detailevent-create');
-    Route::get('/detailevent/{id}', 'Event\DetailEventController@show')->name('detailevent-show');
+    Route::get('/detailevent/{slug}', 'Event\DetailEventController@show')->name('detailevent-show');
     Route::post('/detailevent', 'Event\DetailEventController@store')->name('detailevent-store');
     Route::get('/detailevent/{id}/edit', 'Event\DetailEventController@edit')->name('detailevent-edit');
     Route::patch('/detailevent/{id}', 'Event\DetailEventController@update')->name('detailevent-update');

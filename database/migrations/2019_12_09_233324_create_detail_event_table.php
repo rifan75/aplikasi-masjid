@@ -17,6 +17,7 @@ class CreateDetailEventTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('event'); 
+            $table->string('slug');
             $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -30,22 +30,11 @@ class DetailEventController extends Controller
 
     public function store(DetailEventRequest $request, ProcessDetailEventRepoInterface $repo)
     {
-        $resume = $repo->createDetailEventDefault($request);
+        $detaievent = $repo->createDetailEventDefault($request);
        
-        if ($request->hasFile('img_resume_1')) 
-        {
-          $resume->addMediaFromRequest('img_resume_1')->toMediaCollection('img_resume_1','s3');
-        }
-
-        if ($request->hasFile('img_resume_2')) 
-        {
-          $resume->addMediaFromRequest('img_resume_2')->toMediaCollection('img_resume_2','s3');
-        }
-
-        if ($request->hasFile('img_resume_3')) 
-        {
-          $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
-        }
+        foreach ($request->input('image', []) as $file) {
+          $detaievent->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('event','s3');
+      }
 
         return new DetailEventProcessResponse();
     }
@@ -62,21 +51,22 @@ class DetailEventController extends Controller
 
     public function update(DetailEventRequest $request, ProcessDetailEventRepoInterface $repo, $id)
     {
-        $resume = $repo->updateDetailEventDefault($request, $id);
+        $detailevent = $repo->updateDetailEventDefault($request, $id);
 
-        if ($request->hasFile('img_resume_1')) 
-        {
-          $resume->addMediaFromRequest('img_resume_1')->toMediaCollection('img_resume_1','s3');
+        if (count($detailevent->attachments) > 0) {
+            foreach ($detailevent->attachments as $media) {
+                if (!in_array($media->file_name, $request->input('image', []))) {
+                    $media->delete();
+                }
+            }
         }
-
-        if ($request->hasFile('img_resume_2')) 
-        {
-          $resume->addMediaFromRequest('img_resume_2')->toMediaCollection('img_resume_2','s3');
-        }
-
-        if ($request->hasFile('img_resume_3')) 
-        {
-          $resume->addMediaFromRequest('img_resume_3')->toMediaCollection('img_resume_3','s3');
+    
+        $media = $detailevent->attachments->pluck('file_name')->toArray();
+    
+        foreach ($request->input('image', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $detailevent->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('event','s3');
+            }
         }
 
         return new DetailEventProcessResponse();

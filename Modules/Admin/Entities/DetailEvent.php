@@ -16,6 +16,7 @@ class DetailEvent extends Model implements HasMedia
     protected $table = "detail_event";
     protected $fillable = [
         'event_id',
+        'slug',
         'note',
     ];
 
@@ -27,5 +28,10 @@ class DetailEvent extends Model implements HasMedia
     public function event()
     {
         return $this->belongsTo('Modules\Admin\Entities\Event','event_id','id');
+    }
+
+    public function attachments()
+    {
+        return $this->media()->where('collection_name', 'event');
     }
 }

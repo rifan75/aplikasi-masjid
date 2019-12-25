@@ -50,7 +50,7 @@ return [
     'record_donation' => 'Jurnal Donasi',
     'record_infaq,shodaqoh' => 'Data Infaq & Shodaqoh',
     'development' => 'Pembangunan',
-    'planning' => 'Rencana Kerja',
+    'planning' => 'Deskripsi & Rencana Kerja',
     'progress' => 'Perkembangan',
     'data_mosque' => 'Data Masjid',
 ];

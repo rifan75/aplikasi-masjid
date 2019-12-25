@@ -16,6 +16,7 @@ class ProcessDetailEventRepo implements ProcessDetailEventRepoInterface
     {
         $data = [
             'event_id'  =>   $detaileventData->event_id,
+            'slug'  =>   $detaileventData->slug,
             'note'  =>   $detaileventData->note,
         ];
 
@@ -28,10 +29,12 @@ class ProcessDetailEventRepo implements ProcessDetailEventRepoInterface
     { 
         $data = [
             'event_id'  =>   $detaileventData->event_id,
+            'slug'  =>   $detaileventData->slug,
             'note'  =>   $detaileventData->note,
         ];
         $detailevent = DetailEvent::where('id',$id)->first();
         $detailevent->update($data);
+
         return $detailevent;   
     }
 

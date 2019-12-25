@@ -17,24 +17,6 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Dev::class, function (Faker $faker) {
-    return [
-        'name' => $faker->sentence,
-        'note' => $faker->paragraphs($nb = 6, $asText = true),
-        'team' => [
-            'chief' => $faker->name,
-            'deputy_chief' => $faker->name,
-            'tresury' => $faker->name,
-            'documentation' => $faker->name,
-        ],
-        'planning' => [
-            'cost_estimation' => 'Laki-laki',
-            'period' => $faker->streetAddress,
-            'note_of_planning' => $faker->country,
-        ],
-    ];
-});
-
 $factory->define(Event::class, function ($faker) {
     $dt = $faker->dateTime($max = 'now');
     $date = $dt->format("d M Y");

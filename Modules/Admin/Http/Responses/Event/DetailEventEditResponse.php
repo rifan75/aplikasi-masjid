@@ -1,7 +1,8 @@
 <?php
-namespace Modules\Admin\Http\Responses\DetailEvent;
+namespace Modules\Admin\Http\Responses\Event;
 
 use Illuminate\Contracts\Support\Responsable;
+use Modules\Admin\Entities\Event;
 use Modules\Admin\Entities\DetailEvent;
 
 class DetailEventEditResponse implements Responsable
@@ -13,26 +14,9 @@ class DetailEventEditResponse implements Responsable
 
     public function toResponse($request)
     {
-        if($request->ajax()){
-            return $this->DataTable();
-        }
-        return view('admin::event.event');
-    }
+        $events = Event::where('status',true)->get();
+        $detailevent = DetailEvent::with('attachments')->where('id',$this->id)->first();
 
-    protected function DataTable()
-    {
-        $event = DetailEvent::where('id',$this->id)->first();
-        
-        $data = [
-            'id' => $event->id,
-            'name' => $event->name,
-            'category' => $event->category,
-            'title' => $event->title,
-            'date' => $event->dateedit,
-            'from' => $event->from,
-            'untill' => $event->untill,
-        ];
-  
-        echo json_encode($data);
+        return view('admin::event.detail_event_edit',compact('events','detailevent'));
     }
 }

@@ -14,24 +14,24 @@
 <section class="content">
   <div class="row">
     <div class="col-md-12">
-    <a href="{{route('detailevent-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::event.detailevent_add")</a>
+    <a href="{{route('detaildev-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::dev.detaildev_add")</a>
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::event.detailevent_list")</h3>
+          <h3 class="box-title">@lang("admin::dev.detaildev_list")</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
 					<form method="post" id="formsatuan">
 						<meta id="token" name="token" content="{{ csrf_token() }}">
-          <table id="eventtable" class="table table-bordered table-hover" style="width:100%">
+          <table id="devtable" class="table table-bordered table-hover" style="width:100%">
             <thead>
             <tr>
               <th style="text-align:center">No</th>
               <th style="text-align:center">Id</th>
-              <th style="text-align:center">@lang("admin::event.name")</th>
-              <th style="text-align:center">@lang("admin::event.slug")</th>
-              <th style="text-align:center">@lang("admin::event.preview")</th>
-              <th style="text-align:center">@lang("admin::event.action")</th>
+              <th style="text-align:center">@lang("admin::dev.name")</th>
+              <th style="text-align:center">@lang("admin::dev.slug")</th>
+              <th style="text-align:center">@lang("admin::dev.preview")</th>
+              <th style="text-align:center">@lang("admin::dev.action")</th>
             </tr>
             </thead>
             <tbody>
@@ -52,13 +52,13 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 <script type="text/javascript">
-var table = $('#eventtable').DataTable({
+var table = $('#devtable').DataTable({
     processing: true,
     serverSide: true,
     autoWidth: true,
     scrollX: true,
     lengthChange: false,
-    ajax: {"url" : "/admin/detailevent"},
+    ajax: {"url" : "/admin/detaildev"},
     columns: [
         {data: 0, width: '10px', orderable: false, className: 'dt-center'},{data: 'id',  visible: false},
 		{data: 'name'},{data: 'slug'},{data: 'preview', className: 'dt-center'},
@@ -77,7 +77,7 @@ swal({
 	}).then((result) => {
 		if (result.value) {
 					$.ajax({
-						url : "/admin/detailevent/"+id,
+						url : "/admin/detaildev/"+id,
 						type : "POST",
 						data: {_method: 'DELETE'},
 						beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},

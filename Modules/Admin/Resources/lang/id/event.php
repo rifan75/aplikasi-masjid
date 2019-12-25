@@ -12,6 +12,7 @@ return [
     'time' => 'Waktu Kegiatan',
     'title' => 'Tema',
     'sd' => 's.d',
+    'slug' => 'Slug',
 
     'event_list' => 'Daftar Jadwal Kegiatan',
     'event_input' => 'Input Jadwal Kegiatan',
@@ -23,6 +24,8 @@ return [
     'detailevent_input' => 'Input Kegiatan',
     'detailevent_add' => 'Tambah Kegiatan',
     'detailevent_edit' => 'Edit Kegiatan',
+    'detailevent_back' => "Kembali ke Admin Kegiatan",
+
     'preview' => 'Preview',
 
     'from' => 'dr Jam',

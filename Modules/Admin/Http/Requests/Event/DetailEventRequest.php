@@ -25,9 +25,18 @@ class DetailEventRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PATCH')
+        {
+            
+            return [
+                'event_id' => 'required',
+                'slug' => ['required','unique:detail_event,slug,' .$this->route('id')],
+              ];
+        }
 
         return [
-        'event_id' => ['required'],
+        'event_id' => 'required',
+        'slug' => 'required|unique:detail_event',
         ];
     }
     /**
