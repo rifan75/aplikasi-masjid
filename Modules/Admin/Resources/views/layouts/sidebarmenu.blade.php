@@ -15,9 +15,9 @@
         </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{route('mustahiq')}}">@lang('admin::sidebarmenu.planning')</a></li>
-          <li><a href="{{route('yatim')}}">@lang('admin::sidebarmenu.progress')</a></li>
-          <li><a href="{{route('yatim')}}">@lang('admin::sidebarmenu.finance')</a></li>
+          <li><a href="{{route('development-admin')}}">@lang('admin::sidebarmenu.planning')</a></li>
+          <li><a href="{{route('progress-admin')}}">@lang('admin::sidebarmenu.progress')</a></li>
+          <li><a href="#">@lang('admin::sidebarmenu.finance')</a></li>
         </ul>
     </li>
     <li class="treeview">

@@ -164,6 +164,26 @@ Route::prefix('admin')->group(function () {
     Route::patch('/detailevent/{id}', 'Event\DetailEventController@update')->name('detailevent-update');
     Route::delete('/detailevent/{id}', 'Event\DetailEventController@delete')->name('detailevent-delete');
 
+    /**
+     * Development Routes
+     */
+    Route::get('/development', 'Dev\DevController@index')->name('development-admin');
+    Route::get('/development-create', 'Dev\DevController@create')->name('development-create');
+    Route::get('/development/{slug}', 'Dev\DevController@show')->name('development-show');
+    Route::post('/development', 'Dev\DevController@store')->name('development-store');
+    Route::get('/development/{id}/edit', 'Dev\DevController@edit')->name('development-edit');
+    Route::patch('/development/{id}', 'Dev\DevController@update')->name('development-update');
+    Route::delete('/development/{id}', 'Dev\DevController@delete')->name('development-delete');
 
+    /**
+     * Development Routes
+     */
+    Route::get('/progress', 'Dev\ProgressController@index')->name('progress-admin');
+    Route::get('/progress-create', 'Dev\ProgressController@create')->name('progress-create');
+    Route::get('/progress/{slug}', 'Dev\ProgressController@show')->name('progress-show');
+    Route::post('/progress', 'Dev\ProgressController@store')->name('progress-store');
+    Route::get('/progress/{id}/edit', 'Dev\ProgressController@edit')->name('progress-edit');
+    Route::patch('/progress/{id}', 'Dev\ProgressController@update')->name('progress-update');
+    Route::delete('/progress/{id}', 'Dev\ProgressController@delete')->name('progress-delete');
 });
 

@@ -93,6 +93,14 @@ class AdminServiceProvider extends ServiceProvider
             'Modules\Admin\Http\Repos\Event\ProcessDetailEventRepoInterface',
             'Modules\Admin\Http\Repos\Event\ProcessDetailEventRepo'
             );
+        $this->app->bind(
+            'Modules\Admin\Http\Repos\Dev\ProcessDevRepoInterface',
+            'Modules\Admin\Http\Repos\Dev\ProcessDevRepo'
+            );
+        $this->app->bind(
+            'Modules\Admin\Http\Repos\Dev\ProcessProgressRepoInterface',
+            'Modules\Admin\Http\Repos\Dev\ProcessProgressRepo'
+            );
     }
 
     /**

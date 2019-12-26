@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Admin\Http\Requests\Event;
+namespace Modules\Admin\Http\Requests\Dev;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 use Illuminate\Validation\Rule;
 
-class DetailEventRequest extends FormRequest
+class ProgressRequest extends FormRequest
 {
     use SanitizesInput;
     /**
@@ -25,18 +25,18 @@ class DetailEventRequest extends FormRequest
      */
     public function rules()
     {
+        
         if ($this->method() == 'PATCH')
         {
-            
             return [
-                'event_id' => 'required',
-                'slug' => ['required','alpha_dash','unique:detail_event,slug,' .$this->route('id')],
-              ];
+                'dev_id' => 'required',
+                'date' =>   'required|uniquedate:'.$this->input('dev_id').','.$this->route('id')
+            ];
         }
-
+        
         return [
-        'event_id' => 'required',
-        'slug' => 'required|alpha_dash|unique:detail_event',
+            'dev_id' => 'required',
+            'date' =>   'required|uniquedate:'.$this->input('dev_id')
         ];
     }
     /**

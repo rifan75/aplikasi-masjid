@@ -10,12 +10,10 @@ class ArticleIndexResponse implements Responsable
 {
     public function toResponse($request)
     {
-        $articles = Article::where('status',true);
-
         if($request->ajax()){
             return $this->DataTable();
         }
-        return view('admin::article.article',compact('articles'));
+        return view('admin::article.article');
     }
     public function DataTable()
     {

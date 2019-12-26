@@ -9,6 +9,7 @@
 .box-title {float: left;display: inline-block;font-size: 18px;line-height: 18px;font-weight: 400;margin: 0;
 	          padding: 0;margin-bottom: 8px;color: #fff
           }
+.dz-image img{width: 100%;height: 100%;}
 .note-group-select-from-files {
   display: none;
 }
@@ -21,18 +22,18 @@
     <div class="col-md-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title" id="judulsatuan">@lang("admin::dev.dev_description_input")</h3>
+          <h3 class="box-title" id="judulsatuan">@lang("admin::dev.dev_description_edit")</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
           <div class="container-fluid add-product">
-          <form id="devform" enctype="multipart/form-data" action="{{ route('development-store') }}" method="post" data-toggle="validator">
+          <form id="devform" enctype="multipart/form-data" action="{{ route('development-update',['id' => $dev->id]) }}" method="post" data-toggle="validator">
               {{csrf_field()}}
-              <input id="inputhidden" type='hidden' name='_method' value='POST'>
+              <input id="inputhidden" type='hidden' name='_method' value='PATCH'>
               <div class="row">
                 <div class="form-group col-md-12">
                 <label for="name" class=" control-label">@lang("admin::dev.name") : </label>
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                <input id="name" type="text" class="form-control" name="name" value="{{ $dev->name }}">
                   <p style="color:red">{{ $errors->first('name') }}</p>
                 </div>
               </div>
@@ -41,7 +42,7 @@
                 <label for="slug" class=" control-label">@lang('admin::dev.slug')</label>
                 <div class="row">
                   <div class="col-md-9">
-                  <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}">
+                  <input id="slug" type="text" class="form-control" name="slug" value="{{ $dev->slug }}">
                   </div>
                   <div class="col-md-3">
                   <a href="#datediv" onclick="convertToSlug()" class="btn btn-success"role="button">Generate Slug</a>
@@ -53,7 +54,7 @@
               <div class="row">
                 <div class="form-group col-md-12">
                 <label for="description" class=" control-label">@lang("admin::dev.description") : </label>
-                <textarea id="description" cols="30" rows="2" class="form-control" name="description">{{ old('description') }}</textarea>
+                <textarea id="description" cols="30" rows="2" class="form-control" name="description">{{ $dev->description }}</textarea>
                   <p style="color:red">{{ $errors->first('description') }}</p>
                 </div>
               </div>
@@ -75,7 +76,7 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="@lang('admin::dev.dev_add')">
+                  <input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="@lang('admin::dev.dev_edit')">
                 </div>
               </div>
           </form>
@@ -119,7 +120,25 @@ var uploadedDocumentMap = {}
       }
       $('form').find('input[name="document[]"][value="' + name + '"]').remove()
     },
+    init: function () {
+    
+    @if(isset($dev) && $dev->document)
+      var files =
+        {!! json_encode($dev->document) !!}
+      
+      for (var i in files) {
+        var file = files[i]
+        file['dataURL'] = "{{config('medialibrary.s3.domain')}}/"+file.id+"/"+file.file_name
+        
+        this.options.addedfile.call(this, file)
+        this.options.thumbnail.call(this, file, file.dataURL);
+        file.previewElement.classList.add('dz-complete')
+
+        $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+      }
+    @endif
   }
+}
 var uploadedImageMap = {}
   Dropzone.options.designDropzone = { 
     url: '{{ route('tempmedia-store') }}',
@@ -142,7 +161,25 @@ var uploadedImageMap = {}
       }
       $('form').find('input[name="design[]"][value="' + name + '"]').remove()
     },
+    init: function () {
+    
+    @if(isset($dev) && $dev->design)
+      var files =
+        {!! json_encode($dev->design) !!}
+      
+      for (var i in files) {
+        var file = files[i]
+        file['dataURL'] = "{{config('medialibrary.s3.domain')}}/"+file.id+"/"+file.file_name
+        
+        this.options.addedfile.call(this, file)
+        this.options.thumbnail.call(this, file, file.dataURL);
+        file.previewElement.classList.add('dz-complete')
+
+        $('form').append('<input type="hidden" name="design[]" value="' + file.file_name + '">')
+      }
+    @endif
   }
+}
 
 function convertToSlug()
 {

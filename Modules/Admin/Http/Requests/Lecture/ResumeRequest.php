@@ -30,7 +30,7 @@ class ResumeRequest extends FormRequest
             
             return [
                 'title' => 'required',
-                'slug' => ['required','unique:content_lecture,slug,' .$this->route('id')],
+                'slug' => ['required','alpha_dash','unique:content_lecture,slug,' .$this->route('id')],
                 'content' => 'required',
                 'scholar' => 'required',
                 'img_resume_1' => 'mimes:jpeg,bmp,png|max:1024',
@@ -41,7 +41,7 @@ class ResumeRequest extends FormRequest
 
         return [
         'title' => 'required',
-        'slug' => 'required|unique:content_lecture',
+        'slug' => 'required|alpha_dash|unique:content_lecture',
         'content' => 'required',
         'scholar' => 'required',
         'img_resume_1' => 'mimes:jpeg,bmp,png|max:1024',

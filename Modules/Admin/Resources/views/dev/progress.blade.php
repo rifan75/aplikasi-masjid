@@ -14,10 +14,10 @@
 <section class="content">
   <div class="row">
     <div class="col-md-12">
-    <a href="{{route('development-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::dev.dev_description_input")</a>
+    <a href="{{route('progress-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::dev.progress_add")</a>
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::dev.dev_list")</h3>
+          <h3 class="box-title">@lang("admin::dev.progress_list")</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -29,9 +29,8 @@
               <th style="text-align:center">No</th>
               <th style="text-align:center">Id</th>
               <th style="text-align:center">@lang("admin::dev.name")</th>
+              <th style="text-align:center">@lang("admin::dev.date")</th>
               <th style="text-align:center">@lang("admin::dev.description")</th>
-              <th style="text-align:center">@lang("admin::dev.slug")</th>
-              <th style="text-align:center">@lang("admin::dev.status")</th>
               <th style="text-align:center">@lang("admin::dev.preview")</th>
               <th style="text-align:center">@lang("admin::dev.action")</th>
             </tr>
@@ -60,10 +59,10 @@ var table = $('#devtable').DataTable({
     autoWidth: true,
     scrollX: true,
     lengthChange: false,
-    ajax: {"url" : "/admin/development"},
+    ajax: {"url" : "/admin/progress"},
     columns: [
         {data: 0, width: '10px', orderable: false, className: 'dt-center'},{data: 'id',  visible: false},
-		{data: 'name'},{data: 'description'},{data: 'slug'},{data: 'status', className: 'dt-center'},{data: 'preview', className: 'dt-center'},
+		{data: 'name'},{data: 'date'},{data: 'description'},{data: 'preview', className: 'dt-center'},
 		{data: 'action', className: 'dt-center', orderable: false}
     ],
 });
@@ -79,7 +78,7 @@ swal({
 	}).then((result) => {
 		if (result.value) {
 					$.ajax({
-						url : "/admin/development/"+id,
+						url : "/admin/progress/"+id,
 						type : "POST",
 						data: {_method: 'DELETE'},
 						beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},

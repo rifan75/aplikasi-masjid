@@ -30,7 +30,7 @@ class ArticleRequest extends FormRequest
             
             return [
                 'title' => 'required',
-                'slug' => ['required','unique:article,slug,' .$this->route('id')],
+                'slug' => ['required','alpha_dash','unique:article,slug,' .$this->route('id')],
                 'content' => 'required',
                 'category' => 'required',
                 'img_article_1' => 'mimes:jpeg,bmp,png|max:1024',
@@ -39,7 +39,7 @@ class ArticleRequest extends FormRequest
 
         return [
         'title' => 'required',
-        'slug' => 'required|unique:article',
+        'slug' => 'required|alpha_dash|unique:article',
         'content' => 'required',
         'category' => 'required',
         'img_article_1' => 'mimes:jpeg,bmp,png|max:1024',

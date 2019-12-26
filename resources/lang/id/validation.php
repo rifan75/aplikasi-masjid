@@ -118,6 +118,7 @@ return [
     'uuid' => 'The :attribute must be a valid UUID.',
 
     'oldpassword' => 'Password lama anda invalid.',
+    'uniquedate' => 'Tanggal ini sudah di pakai.',
 
     /*
     |--------------------------------------------------------------------------

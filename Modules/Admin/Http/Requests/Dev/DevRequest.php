@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Admin\Http\Requests\Event;
+namespace Modules\Admin\Http\Requests\Dev;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 use Illuminate\Validation\Rule;
 
-class DetailEventRequest extends FormRequest
+class DevRequest extends FormRequest
 {
     use SanitizesInput;
     /**
@@ -29,14 +29,14 @@ class DetailEventRequest extends FormRequest
         {
             
             return [
-                'event_id' => 'required',
-                'slug' => ['required','alpha_dash','unique:detail_event,slug,' .$this->route('id')],
+                'name' => 'required',
+                'slug' => ['required','alpha_dash','unique:development,slug,' .$this->route('id')],
               ];
         }
 
         return [
-        'event_id' => 'required',
-        'slug' => 'required|alpha_dash|unique:detail_event',
+        'name' => 'required',
+        'slug' => 'required|alpha_dash|unique:development',
         ];
     }
     /**
