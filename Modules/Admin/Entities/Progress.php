@@ -37,6 +37,11 @@ class Progress extends Model implements HasMedia
         ->format('d F Y');
     }
 
+    public function getDaterawAttribute()
+    {
+        return $this->attributes['date'];
+    }
+
     public function setDateAttribute($value)
     {  
         $this->attributes['date'] = DateTime::createFromFormat('d M Y', $value)->format('Y-m-d');

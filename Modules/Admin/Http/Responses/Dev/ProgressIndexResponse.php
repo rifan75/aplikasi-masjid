@@ -32,9 +32,9 @@ class ProgressIndexResponse implements Responsable
         $row['date'] = $progress->date;
         $row['description'] = $progress->description;
 
-        $row['preview'] = '<a href="/admin/progress/'.$progress->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::event.preview").'</a>';
+        $row['preview'] = '<a href="/admin/progress/'.$progress->dev->slug.'/detail" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::event.preview").'</a>';
       
-        $row['action'] = "<a href='/admin/progress/".$progress->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
+        $row['action'] = "<a href='/admin/progress-edit/".$progress->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
                         &nbsp;&nbsp;&nbsp;
                     <a href='#' onclick='deleteForm(\"".$progress->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
         $data[] = $row;

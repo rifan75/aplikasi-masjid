@@ -7,7 +7,7 @@ return [
     'category' => 'Kategori',
     'name' => 'Nama Pembangunan',
     'date' => 'Tanggal',
-    'type' => 'Tipe Pembangunan',
+    'account' => 'Nama Akun',
     'time' => 'Waktu Pembangunan',
     'title' => 'Tema',
     'sd' => 's.d',
@@ -29,6 +29,16 @@ return [
     'progress_add' => 'Tambah Perkembangan',
     'progress_edit' => 'Edit Perkembangan',
     'progress_back' => "Kembali ke Admin Perkembangan",
+
+    'donation' => 'Akun Donasi',
+    'cost' => 'Pengeluaran',
+    'currency' => 'Rp',
+    'total' => 'Jumlah',
+    'remaining_fund' => 'Sisa Dana',
+    'donation_journal' => 'Jurnal Donasi',
+    'cost_journal' => 'Jurnal Pengeluaran',
+    'finance' => 'Keuangan',
+    'report' => 'Laporan Keu',
 
     'preview' => 'Preview',
 

@@ -16,6 +16,7 @@ class CreateDevelopmentTable extends Migration
         Schema::create('development', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('type');
             $table->string('slug');
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);

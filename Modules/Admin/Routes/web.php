@@ -176,14 +176,27 @@ Route::prefix('admin')->group(function () {
     Route::delete('/development/{id}', 'Dev\DevController@delete')->name('development-delete');
 
     /**
-     * Development Routes
+     * Progress Routes
      */
     Route::get('/progress', 'Dev\ProgressController@index')->name('progress-admin');
     Route::get('/progress-create', 'Dev\ProgressController@create')->name('progress-create');
-    Route::get('/progress/{slug}', 'Dev\ProgressController@show')->name('progress-show');
+    Route::get('/progress/{slug}/{date}', 'Dev\ProgressController@show')->name('progress-show');
     Route::post('/progress', 'Dev\ProgressController@store')->name('progress-store');
-    Route::get('/progress/{id}/edit', 'Dev\ProgressController@edit')->name('progress-edit');
+    Route::get('/progress-edit/{id}/edit', 'Dev\ProgressController@edit')->name('progress-edit');
     Route::patch('/progress/{id}', 'Dev\ProgressController@update')->name('progress-update');
     Route::delete('/progress/{id}', 'Dev\ProgressController@delete')->name('progress-delete');
+
+    /**
+     * Finance Development Routes
+     */
+    Route::get('/finde', 'Dev\FinDeController@index')->name('finde-admin');
+    Route::get('/donade/{type}', 'Dev\DonaDeController@index')->name('donade-admin');
+
+    Route::get('/donade-create', 'Dev\DonaDeController@create')->name('donade-create');
+    Route::get('/donade/{slug}/{date}', 'Dev\DonaDeController@show')->name('donade-show');
+    Route::post('/donade', 'Dev\DonaDeController@store')->name('donade-store');
+    Route::get('/donade-edit/{id}/edit', 'Dev\DonaDeController@edit')->name('donade-edit');
+    Route::patch('/donade/{id}', 'Dev\DonaDeController@update')->name('donade-update');
+    Route::delete('/donade/{id}', 'Dev\DonaDeController@delete')->name('donade-delete');
 });
 

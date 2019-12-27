@@ -3,7 +3,7 @@ namespace Modules\Admin\Http\Responses\Dev;
 
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Admin\Entities\Dev;
-use Modules\Admin\Entities\Category;
+use Modules\Admin\Entities\Type;
 
 class DevEditResponse implements Responsable
 {
@@ -15,7 +15,7 @@ class DevEditResponse implements Responsable
     public function toResponse($request)
     {
         $dev = Dev::where('id',$this->id)->first();
-     
-        return view('admin::dev.dev_edit',compact('dev'));
+        $types = Type::all();
+        return view('admin::dev.dev_edit',compact('dev','types'));
     }
 }

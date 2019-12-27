@@ -14,6 +14,7 @@ class Dev extends Model implements HasMedia
     protected $table = "development";
     protected $fillable = [
         'name',
+        'type',
         'slug',
         'description',
     ];

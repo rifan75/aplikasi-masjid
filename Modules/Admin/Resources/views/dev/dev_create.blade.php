@@ -30,10 +30,19 @@
               {{csrf_field()}}
               <input id="inputhidden" type='hidden' name='_method' value='POST'>
               <div class="row">
-                <div class="form-group col-md-12">
-                <label for="name" class=" control-label">@lang("admin::dev.name") : </label>
+                <div class="form-group col-md-9">
+                <label for="name" class=" control-label">@lang("admin::dev.name")  </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
                   <p style="color:red">{{ $errors->first('name') }}</p>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="type">@lang('admin::dev.account')  @lang("admin::dev.finance")</label>
+                  <select name="type" id="type" class="form-control">
+                  @foreach($types as $type)
+                    <option value="{{$type->name}}" id="{{$type->name}}">{{$type->name}}</option>
+                  @endforeach
+                  </select>
+                  <p style="color:red">{{ $errors->first('type') }}</p>
                 </div>
               </div>
               <div class="row">

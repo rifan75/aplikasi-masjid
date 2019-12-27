@@ -14,10 +14,9 @@
 <section class="content">
   <div class="row">
     <div class="col-md-12">
-    <a href="{{route('development-create')}}" id="createbutton" type="button" class=" btn btn-primary" style="margin-bottom:5px">@lang("admin::dev.dev_description_input")</a>
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::dev.dev_list")</h3>
+          <h3 class="box-title">@lang("admin::dev.finance")</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -31,9 +30,7 @@
               <th style="text-align:center">@lang("admin::dev.name")</th>
               <th style="text-align:center">@lang("admin::dev.description")</th>
               <th style="text-align:center">@lang("admin::dev.account")</th>
-              <th style="text-align:center">@lang("admin::dev.slug")</th>
               <th style="text-align:center">@lang("admin::dev.status")</th>
-              <th style="text-align:center">@lang("admin::dev.preview")</th>
               <th style="text-align:center">@lang("admin::dev.action")</th>
             </tr>
             </thead>
@@ -61,40 +58,13 @@ var table = $('#devtable').DataTable({
     autoWidth: true,
     scrollX: true,
     lengthChange: false,
-    ajax: {"url" : "/admin/development"},
+    ajax: {"url" : "/admin/finde"},
     columns: [
         {data: 0, width: '10px', orderable: false, className: 'dt-center'},{data: 'id',  visible: false},
-		{data: 'name'},{data: 'description'},{data: 'account'},{data: 'slug'},{data: 'status', className: 'dt-center'},{data: 'preview', className: 'dt-center'},
+		{data: 'name'},{data: 'description'},{data: 'account'},{data: 'status', className: 'dt-center'},
 		{data: 'action', className: 'dt-center', orderable: false}
     ],
 });
-function deleteForm(id) {
-swal({
-	title: "@lang('admin::ajax.are_you_sure')",
-		text: "@lang('admin::ajax.erased_data_cannot_be_back')",
-	type: "warning",
-		showCancelButton: true,
-	confirmButtonColor: '#3085d6',
-	cancelButtonColor: '#d33',
-	confirmButtonText: "@lang('admin::ajax.yes_delete')"
-	}).then((result) => {
-		if (result.value) {
-					$.ajax({
-						url : "/admin/development/"+id,
-						type : "POST",
-						data: {_method: 'DELETE'},
-						beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},
-						success : function(data){
-						table.ajax.reload();
-						swal("@lang('admin::ajax.success')","@lang('admin::ajax.data_is_erased')","success");
-					},
-						error : function(data) {
-						swal("@lang('admin::ajax.error')","@lang('admin::ajax.cannot_erased_data')","error");
-					}
-				});
-			}
-	});
-}
 </script>
 @include('flash')
 @stop

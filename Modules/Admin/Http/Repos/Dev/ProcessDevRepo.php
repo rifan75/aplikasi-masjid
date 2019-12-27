@@ -16,6 +16,7 @@ class ProcessDevRepo implements ProcessDevRepoInterface
     {
         $data = [
             'name'  =>   $devData->name,
+            'type'  =>   $devData->type,
             'slug'  =>   $devData->slug,
             'description'  =>   $devData->description,
         ];
@@ -29,6 +30,7 @@ class ProcessDevRepo implements ProcessDevRepoInterface
     { 
         $data = [
             'name'  =>   $devData->name,
+            'type'  =>   $devData->type,
             'slug'  =>   $devData->slug,
             'description'  =>   $devData->description,
         ];

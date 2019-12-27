@@ -27,6 +27,7 @@ class DevIndexResponse implements Responsable
         $row[] = $no;
         $row['id'] = $dev->id;
         $row['name'] = $dev->name;
+        $row['account'] = $dev->type;
         $row['description'] = $dev->description;
         $row['slug'] = $dev->slug;
         if($dev->status){
