@@ -101,6 +101,10 @@ class AdminServiceProvider extends ServiceProvider
             'Modules\Admin\Http\Repos\Dev\ProcessProgressRepoInterface',
             'Modules\Admin\Http\Repos\Dev\ProcessProgressRepo'
             );
+        $this->app->bind(
+            'Modules\Admin\Http\Repos\Dev\ProcessDonaDeRepoInterface',
+            'Modules\Admin\Http\Repos\Dev\ProcessDonaDeRepo'
+            );
     }
 
     /**

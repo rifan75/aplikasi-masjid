@@ -2,9 +2,9 @@
 namespace Modules\Admin\Http\Responses\Dev;
 
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Admin\Entities\DetailDonation;
+use Modules\Admin\Entities\DetailCost;
 
-class DonaDeEditResponse implements Responsable
+class CostDeEditResponse implements Responsable
 {
     public function __construct($id)
     {
@@ -21,14 +21,14 @@ class DonaDeEditResponse implements Responsable
 
     protected function DataTable()
     {
-        $donade = DetailDonation::where('id',$this->id)->first();
+        $costde = DetailCost::where('id',$this->id)->first();
         
         $data = [
-            'donations_id' => $donade->donations_id,
-            'name' => $donade->name,
-            'amount' => $donade->amount,
-            'date' => $donade->dateedit,
-            'note' => $donade->note,
+            'donations_id' => $costde->donations_id,
+            'name' => $costde->name,
+            'amount' => $costde->amount,
+            'date' => $costde->dateedit,
+            'note' => $costde->note,
         ];
   
         echo json_encode($data);

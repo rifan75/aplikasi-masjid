@@ -132,7 +132,7 @@ class DonationsTableSeeder extends Seeder
           $endDate = Carbon::parse($toDate);
           
           for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
-              $fridays[] = $date->format('Y-m-d');
+              $fridays[] = $date->format('d M Y');
           } 
 
           foreach ($donations as $donation)

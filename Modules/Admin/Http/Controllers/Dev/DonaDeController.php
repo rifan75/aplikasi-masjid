@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers\Dev;
 
+use Modules\Admin\Http\Controllers\Controller;
 use Modules\Admin\Http\Responses\Dev\DonaDeIndexResponse;
 use Modules\Admin\Http\Responses\Dev\DonaDeEditResponse;
 use Modules\Admin\Http\Responses\Dev\DonaDeProcessResponse;

@@ -37,8 +37,13 @@ return [
     'remaining_fund' => 'Sisa Dana',
     'donation_journal' => 'Jurnal Donasi',
     'cost_journal' => 'Jurnal Pengeluaran',
+    'journal_input' => 'Input Jurnal',
+    'journal_edit' => 'Edit Jurnal',
     'finance' => 'Keuangan',
     'report' => 'Laporan Keu',
+
+    'name_donatur' => 'Nama Donatur',
+    'name_cost' => 'Uraian Biaya',
 
     'preview' => 'Preview',
 

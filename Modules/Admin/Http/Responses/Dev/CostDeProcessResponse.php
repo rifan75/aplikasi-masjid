@@ -4,7 +4,7 @@ namespace Modules\Admin\Http\Responses\Dev;
 use Illuminate\Contracts\Support\Responsable;
 
 
-class DonaDeProcessResponse implements Responsable
+class CostDeProcessResponse implements Responsable
 {
 
     public function toResponse($request)
@@ -15,19 +15,19 @@ class DonaDeProcessResponse implements Responsable
         {
             if (config('app.locale')=='en')
             {
-                flash()->success('Success', 'Donation Journal  is updated');
+                flash()->success('Success', 'Cost Journal  is updated');
             }else{
-                flash()->success('Success', 'Jurnal Donasi sudah diupdate');
+                flash()->success('Success', 'Jurnal Biaya sudah diupdate');
             }
         }
         elseif($request->method() == 'POST')
         {
             if (config('app.locale')=='en'){
-                flash()->success('Success', 'Donation Journal is Added');
+                flash()->success('Success', 'Cost Journal is Added');
             }else{
-                flash()->success('Success', 'Jurnal Donasi sudah ditambah');
+                flash()->success('Success', 'Jurnal Biaya sudah ditambah');
             }
         }
-        return redirect('/admin/donade/'.$type);
+        return redirect('/admin/costde/'.$type);
     }
 }

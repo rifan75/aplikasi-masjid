@@ -14,6 +14,7 @@ class CreateDetailCostTable extends Migration
     public function up()
     {
         Schema::create('detail_cost', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('cost_id')->unsigned();
             $table->string('name');
             $table->date('date');

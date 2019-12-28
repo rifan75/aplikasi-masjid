@@ -190,13 +190,17 @@ Route::prefix('admin')->group(function () {
      * Finance Development Routes
      */
     Route::get('/finde', 'Dev\FinDeController@index')->name('finde-admin');
+    
     Route::get('/donade/{type}', 'Dev\DonaDeController@index')->name('donade-admin');
-
-    Route::get('/donade-create', 'Dev\DonaDeController@create')->name('donade-create');
-    Route::get('/donade/{slug}/{date}', 'Dev\DonaDeController@show')->name('donade-show');
-    Route::post('/donade', 'Dev\DonaDeController@store')->name('donade-store');
+    Route::post('/donadestore', 'Dev\DonaDeController@store')->name('donade-store');
     Route::get('/donade-edit/{id}/edit', 'Dev\DonaDeController@edit')->name('donade-edit');
     Route::patch('/donade/{id}', 'Dev\DonaDeController@update')->name('donade-update');
     Route::delete('/donade/{id}', 'Dev\DonaDeController@delete')->name('donade-delete');
+
+    Route::get('/costde/{type}', 'Dev\CostDeController@index')->name('costde-admin');
+    Route::post('/costdestore', 'Dev\CostDeController@store')->name('costde-store');
+    Route::get('/costde-edit/{id}/edit', 'Dev\CostDeController@edit')->name('costde-edit');
+    Route::patch('/costde/{id}', 'Dev\CostDeController@update')->name('costde-update');
+    Route::delete('/costde/{id}', 'Dev\CostDeController@delete')->name('costde-delete');
 });
 

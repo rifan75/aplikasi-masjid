@@ -18,17 +18,21 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(DetailDonation::class, function ($faker) {
+    $dt = $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now');
+    $date = $dt->format("d M Y");
     return [
         'name' => $faker->name,
         'amount' => $faker->numberBetween($min = 1000, $max = 9000),
-        'date' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now'),
+        'date' => $date,
     ];
 });
 $factory->define(DetailCost::class, function ($faker) {
+    $dt = $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now');
+    $date = $dt->format("d M Y");
     return [
         'name' => $faker->sentence($nbWords = 6),
         'amount' => $faker->numberBetween($min = 1000, $max = 9000),
-        'date' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now'),
+        'date' => $date,
         'note'=>$faker->sentences($nb=3, $asText = true),
     ];
 });

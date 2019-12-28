@@ -16,7 +16,7 @@
     <div class="col-md-9">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::dev.donation_journal")</h3>
+          <h3 class="box-title">@lang("admin::dev.cost_journal")</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -27,7 +27,7 @@
             <tr>
               <th style="text-align:center">No</th>
               <th style="text-align:center">Id</th>
-              <th style="text-align:center">@lang("admin::dev.name_donatur")</th>
+              <th style="text-align:center">@lang("admin::dev.name_cost")</th>
               <th style="text-align:center">@lang("admin::dev.date")</th>
               <th style="text-align:center">@lang("admin::dev.total") (@lang("admin::dev.currency"))</th>
               <th style="text-align:center">@lang("admin::dev.account")</th>
@@ -51,7 +51,7 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="container-fluid add-product">
-          <form id="devform" action="/admin/donadestore" method="post" data-toggle="validator">
+          <form id="devform" action="/admin/costdestore" method="post" data-toggle="validator">
               {{csrf_field()}}
               <input id="inputhidden" type='hidden' name='_method' value='POST'>
               <input id="typehidden" type='hidden' name='type' value='{{$type}}'>
@@ -64,20 +64,20 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                <label for="name" class=" control-label">@lang("admin::dev.name_donatur") : </label>
+                <label for="name" class=" control-label">@lang("admin::dev.name_costtur") : </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                   <p style="color:red">{{ $errors->first('name') }}</p>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="donations_id">@lang('admin::dev.account')  @lang("admin::dev.finance")</label>
-                  <select name="donations_id" id="donations_id" class="form-control">
-                  @foreach($donations as $donation)
-                    <option value="{{$donation->id}}" id="{{$donation->id}}">{{$donation->name}}</option>
+                  <label for="costs_id">@lang('admin::dev.account')  @lang("admin::dev.finance")</label>
+                  <select name="costs_id" id="costs_id" class="form-control">
+                  @foreach($costs as $cost)
+                    <option value="{{$cost->id}}" id="{{$cost->id}}">{{$cost->name}}</option>
                   @endforeach
                   </select>
-                  <p style="color:red">{{ $errors->first('donations_id') }}</p>
+                  <p style="color:red">{{ $errors->first('costs_id') }}</p>
                 </div>
               </div>
               <div class="row">
@@ -127,7 +127,7 @@ var table = $('#devtable').DataTable({
     scrollX: true,
     dom: 'Bfrtip',
     buttons: ['csv', 'excel', 'pdf', 'print'],
-    ajax: {"url" : "/admin/donade/{{$type}}"},
+    ajax: {"url" : "/admin/costde/{{$type}}"},
     columns: [
         {data: 0, width: '10px', orderable: false},{data: 'id',  visible: false},{data: 'name'},
         {data: 'date'},{data: 'amount', className: 'dt-right'},{data: 'account'},
@@ -140,7 +140,7 @@ function editForm(id){
 	  $('#inputhidden').val('PATCH');
 	  $('#devform')[0].reset();
 	  $.ajax({
-	    url : "/admin/donade-edit/"+id+"/edit",
+	    url : "/admin/costde-edit/"+id+"/edit",
 	    type : "GET",
 	    dataType : "JSON",
 	    success : function(data){
@@ -148,10 +148,10 @@ function editForm(id){
 	      $('#submit').val('Submit');
         $('#date').val(data.date);
 	      $('#name').val(data.name);
-        $('#donations_id option[value= "'+data.donations_id+'"]').prop("selected",true);
+        $('#costs_id option[value= "'+data.costs_id+'"]').prop("selected",true);
         $('#amount').val(data.amount);
         $('#note').val(data.note);
-	      $('#devform').attr('action', '/admin/donade/'+id);
+	      $('#devform').attr('action', '/admin/costde/'+id);
 	    },
 	    error : function() {
 				swal("@lang('admin::ajax.error')","@lang('admin::ajax.ops_something_wrong')","error");
@@ -171,7 +171,7 @@ function editForm(id){
 		}).then((result) => {
 			if (result.value) {
 						$.ajax({
-							url : "/admin/donade/"+id,
+							url : "/admin/costde/"+id,
 							type : "POST",
 							data: {_method: 'DELETE'},
 							beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},
