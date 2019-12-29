@@ -32,7 +32,7 @@ class MustahiqController extends Controller
 
         if ($request->hasFile('picture')) 
         {
-          $mustahiq->addMediaFromRequest('mustahiq')->toMediaCollection('mustahiq','s3');
+          $mustahiq->addMediaFromRequest('picture')->toMediaCollection('mustahiq','s3');
         }
 
         return new MustahiqProcessResponse();
@@ -54,7 +54,7 @@ class MustahiqController extends Controller
 
         if ($request->hasFile('picture')) 
         {
-          $mustahiq->addMediaFromRequest('mustahiq')->toMediaCollection('mustahiq','s3');
+          $mustahiq->addMediaFromRequest('picture')->toMediaCollection('mustahiq','s3');
         }
 
         return new MustahiqProcessResponse();

@@ -56,5 +56,10 @@ class Article extends Model implements HasMedia
     {
         return $this->belongsTo('Modules\Admin\Entities\User','user_id','id');
     }
+
+    public function agree()
+    {
+        return $this->hasMany('Modules\Admin\Entities\ArticleAgree','article_id','id');
+    }
     
 }

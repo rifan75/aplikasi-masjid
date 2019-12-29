@@ -39,7 +39,6 @@
               <th style="text-align:center">Id</th>
               <th style="text-align:center">@lang("admin::donation.name")</th>
               <th style="text-align:center">@lang("admin::donation.form")</th>
-              <th style="text-align:center">@lang("admin::donation.status")</th>
               <th style="text-align:center">@lang("admin::donation.type")</th>
               <th style="text-align:center">@lang("admin::donation.action")</th>
             </tr>
@@ -209,8 +208,7 @@ var table = $('#donationtable').DataTable({
     columns: [
         {"className":'details-control',"orderable":false,"searchable":false,"data":null,"defaultContent": ''},
         {data: 0, width: '10px', orderable: false},{data: 'id',  visible: false},{data: 'name'},{data: 'form'},
-        {data: 'status', className: 'dt-center'},{data: 'type'},
-				{data: 'action', className: 'dt-center', orderable: false}
+        {data: 'type'},{data: 'action', className: 'dt-center', orderable: false}
     ],
 });
 $('#donationtable tbody').on('click', 'td.details-control', function () {

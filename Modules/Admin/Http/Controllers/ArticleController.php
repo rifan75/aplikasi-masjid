@@ -7,7 +7,9 @@ use Modules\Admin\Http\Responses\Article\ArticleCreateResponse;
 use Modules\Admin\Http\Responses\Article\ArticleShowResponse;
 use Modules\Admin\Http\Responses\Article\ArticleEditResponse;
 use Modules\Admin\Http\Responses\Article\ArticleProcessResponse;
+use Modules\Admin\Http\Responses\Article\ArticleAgreeProcessResponse;
 use Modules\Admin\Http\Requests\ArticleRequest;
+use Modules\Admin\Http\Requests\ArticleAgreeRequest;
 use Modules\Admin\Http\Repos\ProcessArticleRepoInterface;
 
 class ArticleController extends Controller
@@ -64,5 +66,19 @@ class ArticleController extends Controller
     public function delete(ProcessArticleRepoInterface $repo, $id)
     {
         $repo->deleteArticleDefault($id);
+    }
+
+    public function createagree(ArticleAgreeRequest $request, ProcessArticleRepoInterface $repo)
+    {
+        $article = $repo->createagreeArticleDefault($request);
+
+        return redirect('/admin/article/'.$article->slug);
+    }
+
+    public function updateagree(ProcessArticleRepoInterface $repo,$id,$artId)
+    {
+        $article = $repo->updateagreeArticleDefault($id,$artId);
+
+        return new ArticleAgreeProcessResponse;
     }
 }

@@ -21,7 +21,10 @@ return [
     'error' => 'Error',
     'cannot_erased_data' => 'Tdk bisa menghapus data !',
     'this_will_change_active_mode' => 'Ini akan mengubah mode aktif',
+    'this_will_change_publish_mode' => 'Ini akan mengubah mode publish',
+    'this_will_change_agreement' => 'Ini akan mengubah persetujuan anda',
     'yes_i_am_sure' => 'Ya, Saya Yakin !',
     'active_mode_is_changed' => 'Mode aktif telah berubah',
+    'publish_mode_is_changed' => 'Mode Publish telah berubah',
     'ops_something_wrong' => 'Aduh, Ada Yg Salah !!',
 ];

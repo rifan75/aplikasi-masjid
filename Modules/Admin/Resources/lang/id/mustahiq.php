@@ -15,4 +15,5 @@ return [
     'mustahiq_edit' => 'Edit Mustahiq',
 
     'type' => 'Alasan',
+    'status' => 'Status',
   ];

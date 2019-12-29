@@ -6,4 +6,6 @@ interface ProcessArticleRepoInterface
     public function createArticleDefault($articleData);
     public function updateArticleDefault($articleData, $id);
     public function deleteArticleDefault($id);
+    public function createagreeArticleDefault($articleData);
+    public function updateagreeArticleDefault($id,$artId);
 }

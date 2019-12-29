@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Responses\Article;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Admin\Entities\Article;
 use DataTables;
+use Auth;
 
 
 class ArticleIndexResponse implements Responsable
@@ -37,10 +38,16 @@ class ArticleIndexResponse implements Responsable
             $row['published'] = "<a href='#' onclick='editAct(\"".$article->id."\",\"".$article->published."\")'><i class='fa fa-ban' title='edit'></i></a>";
         }
         $row['preview'] = '<a href="/admin/article/'.$article->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::article.preview").'</a>';
-        $row['action'] = "<a href='/admin/article/".$article->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
-                        &nbsp;&nbsp;&nbsp;
-                    <a href='#' onclick='deleteForm(\"".$article->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
-        $data[] = $row;
+        if (Auth::user()->id==$article->user_id)
+        {
+            $row['action'] = "<a href='/admin/article/".$article->id."/edit'><i class='fa fa-pencil-square-o'></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                        <a href='#' onclick='deleteForm(\"".$article->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
+        }else{
+
+            $row['action'] = "Setuju/Tdk Setuju";
+        }
+            $data[] = $row;
         }
 
         return DataTables::of($data)->escapeColumns([])->make(true);

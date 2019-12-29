@@ -31,9 +31,9 @@ class DevIndexResponse implements Responsable
         $row['description'] = $dev->description;
         $row['slug'] = $dev->slug;
         if($dev->status){
-            $row['status'] = "<a href='#' onclick='editAct(\"".$dev->id."\",\"".$dev->published."\")'><i class='fa fa-check' title='edit'></i></a>";
+            $row['status'] = "<a href='#' onclick='editAct(\"".$dev->id."\",\"".$dev->status."\")'><i class='fa fa-check' title='edit'></i></a>";
         }else{
-            $row['status'] = "<a href='#' onclick='editAct(\"".$dev->id."\",\"".$dev->published."\")'><i class='fa fa-ban' title='edit'></i></a>";
+            $row['status'] = "<a href='#' onclick='editAct(\"".$dev->id."\",\"".$dev->status."\")'><i class='fa fa-ban' title='edit'></i></a>";
         }
         $row['preview'] = '<a href="/admin/development/'.$dev->slug.'" id="createbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">'.__("admin::dev.preview").'</a>';
         $row['action'] = "<a href='/admin/development/".$dev->id."/edit'><i class='fa fa-pencil-square-o'></i></a>

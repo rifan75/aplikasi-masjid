@@ -16,6 +16,7 @@ class Dev extends Model implements HasMedia
         'name',
         'type',
         'slug',
+        'status',
         'description',
     ];
 

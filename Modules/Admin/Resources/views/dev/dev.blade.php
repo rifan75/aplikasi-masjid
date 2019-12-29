@@ -95,6 +95,33 @@ swal({
 			}
 	});
 }
+function editAct(id,act) {
+  swal({
+    title: "@lang('admin::ajax.are_you_sure')",
+    text: "@lang('admin::ajax.this_will_change_active_mode')",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "@lang('admin::ajax.yes_i_am_sure')"
+  }).then((result) => {
+		if (result.value) {
+      $.ajax({
+        url : "/admin/activatedev/"+id+"/"+act,
+        type : "PATCH",
+        data: {_method: 'UPDATE'},
+        beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},
+        success : function(data){
+        table.ajax.reload();
+        swal("@lang('admin::ajax.success')","@lang('admin::ajax.active_mode_is_changed')","success");
+      },
+        error : function(data) {
+        swal("@lang('admin::ajax.error')","@lang('admin::ajax.ops_something_wrong')","error");
+      }
+      });
+		}
+  });
+}
 </script>
 @include('flash')
 @stop

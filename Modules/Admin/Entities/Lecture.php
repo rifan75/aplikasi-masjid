@@ -62,6 +62,11 @@ class Lecture extends Model
         return 'Tidak Aktif';
     }
     
+    public function getStatusrawAttribute()
+    {   
+        return $this->attributes['status'];
+    }
+
     public function setDateAttribute($value)
     {  
         $this->attributes['date'] = DateTime::createFromFormat('d M Y', $value)->format('Y-m-d');

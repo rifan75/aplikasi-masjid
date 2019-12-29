@@ -29,12 +29,17 @@ class MustahiqIndexResponse implements Responsable
         $row['name'] = $mustahiq->name;
         $row['type'] = $mustahiq->type;
         $row['note'] = $mustahiq->note;
-        $row['picture'] = $mustahiq->getFirstMediaUrl('mustahiq')==null ? asset('images/picture.jpg') : $Mustahiq->getFirstMediaUrl('mustahiq');
+        $row['picture'] = $mustahiq->getFirstMediaUrl('mustahiq')==null ? asset('images/picture.jpg') : $mustahiq->getFirstMediaUrl('mustahiq');
         $row['gender'] = $mustahiq->contact["Gender"];
         $row['address'] = $mustahiq->contact["Address"];
         $row['city'] = $mustahiq->contact["City"];
         $row['country'] = $mustahiq->contact["Country"];
         $row['telephone'] = $mustahiq->contact["Telephone"];
+        if($mustahiq->status){
+            $row['status'] = "<a href='#' onclick='editAct(\"".$mustahiq->id."\",\"".$mustahiq->status."\")'><i class='fa fa-check' title='edit'></i></a>";
+        }else{
+            $row['status'] = "<a href='#' onclick='editAct(\"".$mustahiq->id."\",\"".$mustahiq->status."\")'><i class='fa fa-ban' title='edit'></i></a>";
+        }
         $row['action'] = "<a href='#' onclick='editForm(\"".$mustahiq->id."\")'><i class='fa fa-pencil-square-o'></i></a>
                         &nbsp;&nbsp;&nbsp;
                     <a href='#' onclick='deleteForm(\"".$mustahiq->id."\")' type='submit'><i class='fa fa-trash'></i></a>";

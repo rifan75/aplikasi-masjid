@@ -32,7 +32,7 @@ class YatimController extends Controller
 
         if ($request->hasFile('picture')) 
         {
-          $yatim->addMediaFromRequest('yatim')->toMediaCollection('yatim','s3');
+          $yatim->addMediaFromRequest('picture')->toMediaCollection('yatim','s3');
         }
 
         return new YatimProcessResponse();
@@ -54,7 +54,7 @@ class YatimController extends Controller
 
         if ($request->hasFile('picture')) 
         {
-          $yatim->addMediaFromRequest('yatim')->toMediaCollection('yatim','s3');
+          $yatim->addMediaFromRequest('picture')->toMediaCollection('yatim','s3');
         }
 
         return new YatimProcessResponse();

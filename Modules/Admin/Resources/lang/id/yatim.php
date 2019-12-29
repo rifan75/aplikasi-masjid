@@ -16,4 +16,5 @@ return [
 
     'age' => 'Umur',
     'birth' => 'Tanggal Lahir',
+    'status' => 'Status',
   ];

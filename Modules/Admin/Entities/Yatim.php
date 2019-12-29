@@ -53,7 +53,7 @@ class Yatim extends Model implements HasMedia
     public function getBirtheditAttribute()
     {
         return Carbon::parse($this->attributes['birth'])
-        ->translatedFormat('d F Y');
+        ->format('d F Y');
     }
 
     public function getAgeAttribute()

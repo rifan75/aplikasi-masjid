@@ -32,11 +32,6 @@ class DonationIndexResponse implements Responsable
         $row['name'] = $donation->name;
         $row['form'] = __('admin::donation.'.$donation->form);
         $row['type'] = $donation->type;
-        if($donation->status){
-            $row['status'] = "<a href='#' onclick='editAct(\"".$donation->id."\",\"".$donation->status."\")'><i class='fa fa-check' title='edit'></i></a>";
-        }else{
-            $row['status'] = "<a href='#' onclick='editAct(\"".$donation->id."\",\"".$lecture->status."\")'><i class='fa fa-ban' title='edit'></i></a>";
-        }
         if($donation->form == 'lock_box'){
             $row['formtrue'] = true;
             $row['incharge'] = $donation->contact['incharge'];

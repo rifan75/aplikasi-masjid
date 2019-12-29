@@ -148,6 +148,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/article/{id}/edit', 'ArticleController@edit')->name('article-edit');
     Route::patch('/article/{id}', 'ArticleController@update')->name('article-update');
     Route::delete('/article/{id}', 'ArticleController@delete')->name('article-delete');
+    Route::post('/articleagree', 'ArticleController@createagree')->name('articleagree');
+    Route::patch('/articleagree/{id}/{artId}', 'ArticleController@updateagree')->name('articleagree-update');
 
     /**
      * DetailEvent Routes
@@ -203,5 +205,9 @@ Route::prefix('admin')->group(function () {
      */
      Route::patch('/activateuser/{id}/{act}', 'ActivateController@updateuser');
      Route::patch('/activateevent/{id}/{act}', 'ActivateController@updateevent');
+     Route::patch('/activatelecture/{id}/{act}', 'ActivateController@updatelecture');
+     Route::patch('/activatemustahiq/{id}/{act}', 'ActivateController@updatemustahiq');
+     Route::patch('/activateyatim/{id}/{act}', 'ActivateController@updateyatim');
+     Route::patch('/activatedev/{id}/{act}', 'ActivateController@updatedev');
 });
 

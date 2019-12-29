@@ -40,6 +40,7 @@
               <th style="text-align:center">Id</th>
               <th style="text-align:center">@lang("admin::yatim.name")</th>
               <th style="text-align:center">@lang("admin::yatim.gender")</th>
+              <th style="text-align:center">@lang("admin::yatim.status")</th>
               <th style="text-align:center">@lang("admin::yatim.age")</th>
               <th style="text-align:center">@lang("admin::yatim.action")</th>
             </tr>
@@ -201,7 +202,7 @@ var table = $('#yatimtable').DataTable({
     columns: [
         {"className":'details-control',"orderable":false,"searchable":false,"data":null,"defaultContent": ''},
         {data: 0, width: '10px', orderable: false},{data: 'id',  visible: false},
-        {data: 'name'},{data: 'gender'},{data: 'age'},
+        {data: 'name'},{data: 'gender'},{data: 'status', className: 'dt-center'},{data: 'age'},
 				{data: 'action', className: 'dt-center', orderable: false}
     ],
 });
@@ -297,6 +298,33 @@ function editForm(id){
     				});
 				}
 		});
+}
+function editAct(id,act) {
+  swal({
+    title: "@lang('admin::ajax.are_you_sure')",
+    text: "@lang('admin::ajax.this_will_change_active_mode')",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "@lang('admin::ajax.yes_i_am_sure')"
+  }).then((result) => {
+		if (result.value) {
+      $.ajax({
+        url : "/admin/activateyatim/"+id+"/"+act,
+        type : "PATCH",
+        data: {_method: 'UPDATE'},
+        beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},
+        success : function(data){
+        table.ajax.reload();
+        swal("@lang('admin::ajax.success')","@lang('admin::ajax.active_mode_is_changed')","success");
+      },
+        error : function(data) {
+        swal("@lang('admin::ajax.error')","@lang('admin::ajax.ops_something_wrong')","error");
+      }
+      });
+		}
+  });
 }
 </script>
 @include('flash')

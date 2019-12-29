@@ -14,6 +14,5 @@ class Cost extends Model
         'name',
         'type',
         'note',
-        'status',
     ];
 }

@@ -24,7 +24,8 @@ class MustahiqEditResponse implements Responsable
         $mustahiq = Mustahiq::where('id',$this->id)->first();
         
         $data = [
-            'name' => ucfirst($mustahiq->name),
+            'name' => $mustahiq->name,
+            'type' => $mustahiq->type,
             'gender' => $mustahiq->contact['Gender'],
             'address' => $mustahiq->contact['Address'],
             'city' => $mustahiq->contact['City'],

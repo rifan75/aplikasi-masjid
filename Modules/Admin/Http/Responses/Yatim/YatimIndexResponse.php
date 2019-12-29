@@ -30,12 +30,17 @@ class YatimIndexResponse implements Responsable
         $row['age'] = $yatim->age;
         $row['birth'] = $yatim->birth;
         $row['note'] = $yatim->note;
-        $row['picture'] = $yatim->getFirstMediaUrl('yatim')==null ? asset('images/picture.jpg') : $Yatim->getFirstMediaUrl('yatim');
+        $row['picture'] = $yatim->getFirstMediaUrl('yatim')==null ? asset('images/picture.jpg') : $yatim->getFirstMediaUrl('yatim');
         $row['gender'] = $yatim->contact["Gender"];
         $row['address'] = $yatim->contact["Address"];
         $row['city'] = $yatim->contact["City"];
         $row['country'] = $yatim->contact["Country"];
         $row['telephone'] = $yatim->contact["Telephone"];
+        if($yatim->status){
+            $row['status'] = "<a href='#' onclick='editAct(\"".$yatim->id."\",\"".$yatim->status."\")'><i class='fa fa-check' title='edit'></i></a>";
+        }else{
+            $row['status'] = "<a href='#' onclick='editAct(\"".$yatim->id."\",\"".$yatim->status."\")'><i class='fa fa-ban' title='edit'></i></a>";
+        }
         $row['action'] = "<a href='#' onclick='editForm(\"".$yatim->id."\")'><i class='fa fa-pencil-square-o'></i></a>
                         &nbsp;&nbsp;&nbsp;
                     <a href='#' onclick='deleteForm(\"".$yatim->id."\")' type='submit'><i class='fa fa-trash'></i></a>";

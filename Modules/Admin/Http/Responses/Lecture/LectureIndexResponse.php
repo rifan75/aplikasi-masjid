@@ -35,10 +35,10 @@ class LectureIndexResponse implements Responsable
         $row['category'] = $lecture->category;
         $row['title'] = $lecture->title;
         $row['type'] = $lecture->type;
-        if($lecture->status){
-            $row['status'] = "<a href='#' onclick='editAct(\"".$lecture->id."\",\"".$lecture->status."\")'><i class='fa fa-check' title='edit'></i></a>";
+        if($lecture->statusraw){
+            $row['status'] = "<a href='#' onclick='editAct(\"".$lecture->id."\",\"".$lecture->statusraw."\")'><i class='fa fa-check' title='edit'></i></a>";
         }else{
-            $row['status'] = "<a href='#' onclick='editAct(\"".$lecture->id."\",\"".$lecture->status."\")'><i class='fa fa-ban' title='edit'></i></a>";
+            $row['status'] = "<a href='#' onclick='editAct(\"".$lecture->id."\",\"".$lecture->statusraw."\")'><i class='fa fa-ban' title='edit'></i></a>";
         }
         if ($lecture->type){
             $row['time'] =$lecture->daytrans.'<br>'.$lecture->from.'  '.__('admin::lecture.sd').'  '.$lecture->untill;
