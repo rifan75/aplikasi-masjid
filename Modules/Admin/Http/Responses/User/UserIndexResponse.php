@@ -22,7 +22,7 @@ class UserIndexResponse implements Responsable
     protected function UserDataTable()
     {
         
-        $users = User::all();
+        $users = User::orderBy('id', 'desc')->get();
         $no = 0;
         $data = array();
         
@@ -48,6 +48,7 @@ class UserIndexResponse implements Responsable
                 $row['action'] = "<a href='#' onclick='editForm(\"".$user->id."\")'><i class='fa fa-pencil-square-o' title='edit'></i></a>";
                 $row['active'] = "<i class='fa fa-check' title='edit'></i>";
             }
+           
             $row['profile_gender'] = $user->profile->contact["Gender"];
             $row['profile_address'] = $user->profile->contact["Address"];
             $row['profile_city'] = $user->profile->contact["City"];

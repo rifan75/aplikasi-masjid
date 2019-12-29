@@ -16,7 +16,7 @@
     <div class="col-md-9">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::dev.cost_journal")</h3>
+          <h3 class="box-title">@lang("admin::dev.cost_journal") - {{$type}}</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -64,15 +64,15 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                <label for="name" class=" control-label">@lang("admin::dev.name_costtur") : </label>
+                <label for="name" class=" control-label">@lang("admin::dev.name_cost") : </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                   <p style="color:red">{{ $errors->first('name') }}</p>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="costs_id">@lang('admin::dev.account')  @lang("admin::dev.finance")</label>
-                  <select name="costs_id" id="costs_id" class="form-control">
+                  <label for="cost_id">@lang('admin::dev.account')  @lang("admin::dev.finance")</label>
+                  <select name="cost_id" id="cost_id" class="form-control">
                   @foreach($costs as $cost)
                     <option value="{{$cost->id}}" id="{{$cost->id}}">{{$cost->name}}</option>
                   @endforeach
@@ -148,7 +148,7 @@ function editForm(id){
 	      $('#submit').val('Submit');
         $('#date').val(data.date);
 	      $('#name').val(data.name);
-        $('#costs_id option[value= "'+data.costs_id+'"]').prop("selected",true);
+        $('#cost_id option[value= "'+data.cost_id+'"]').prop("selected",true);
         $('#amount').val(data.amount);
         $('#note').val(data.note);
 	      $('#devform').attr('action', '/admin/costde/'+id);

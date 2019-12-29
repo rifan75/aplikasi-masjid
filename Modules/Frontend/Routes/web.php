@@ -29,8 +29,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
  */
 
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('registernew', 'Auth\RegisterController@register')->name('registernew');
-Route::get('checkdomain/{subdomain}', 'Auth\RegisterController@checksubdomain')->name('checksubdomain');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 Route::get('/user/verify/{token}', 'VerifyController@verifyUser');
 Route::get('/resend/link', 'HomeController@resendlink');
 

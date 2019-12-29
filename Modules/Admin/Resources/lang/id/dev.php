@@ -45,6 +45,7 @@ return [
     'name_donatur' => 'Nama Donatur',
     'name_cost' => 'Uraian Biaya',
 
+
     'preview' => 'Preview',
 
     'from' => 'dr Jam',

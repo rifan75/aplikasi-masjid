@@ -24,7 +24,7 @@ class CostDeEditResponse implements Responsable
         $costde = DetailCost::where('id',$this->id)->first();
         
         $data = [
-            'donations_id' => $costde->donations_id,
+            'cost_id' => $costde->cost_id,
             'name' => $costde->name,
             'amount' => $costde->amount,
             'date' => $costde->dateedit,

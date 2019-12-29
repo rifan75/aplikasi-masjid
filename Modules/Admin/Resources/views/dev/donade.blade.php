@@ -16,7 +16,7 @@
     <div class="col-md-9">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">@lang("admin::dev.donation_journal")</h3>
+          <h3 class="box-title">@lang("admin::dev.donation_journal") - {{$type}}</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

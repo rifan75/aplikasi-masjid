@@ -2,19 +2,15 @@
 
 namespace Modules\Frontend\Http\Controllers\Auth;
 
-use Modules\Account\Http\Repos\Auth\RegisterCreateRepo;
-use Modules\Account\Http\Repos\Payment\PaymentStartRepo;
-use Modules\Account\Http\Responses\RegisterIndexResponse;
-use Modules\Account\Entities\Company;
-use Modules\Account\Entities\VerifyUser;
-use Modules\Frontend\Http\Controllers\Controller;
-use Modules\Account\Http\Rule\SubDomainRule;
+use Modules\Admin\Entities\User;
+use Modules\Admin\Entities\Profile;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Http\Request;
-
-use DB;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -36,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -65,10 +61,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'company_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'subdomain' => ['required','unique:company,slug', new SubDomainRule],
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -80,54 +74,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $registercreate = new RegisterCreateRepo;
-    
-        $user = $registercreate->create($data);
-
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ]);
+        Profile::create([
+            'user_id' => $user->id,
+            ]);
+        $user->assignRole('member');
         return $user;
     }
 
     protected function registered(Request $request, $user)
     {
-        $paymentrepo = new PaymentStartRepo;
-
-        if($request->bayar_ngak=="choice1" || $request->bayar_ngak=="choice2" || $request->bayar_ngak=="choice3")
-        {
-            $payment = $paymentrepo->payment($request->bayar_ngak,$user);
-
-            return redirect($payment);
-        }
-        return redirect('/home-account')->with('status', 'Kami telah kirimkan link aktivasi ke email anda.');
+        Auth::guard('web')->logout();
+        return redirect('/login')->with('status', 'Mohon tunggu akun anda di aktivasi oleh pengurus Masjid.');
     }
-
-    protected function checksubdomain($subdomain)
-    {
-        if (!preg_match('/^[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?$/', $subdomain)) 
-        {
-            $data = "Subdomain ini tidak bisa dipakai";
-                return json_encode($data);
-        }
-        $slug = self::$subdomains;
-        $sub = strtolower($subdomain);
-        foreach ($slug as $value)
-        {
-            if ($value == $sub)
-            {
-                $data = "Subdomain ini sudah terpakai";
-                return json_encode($data);
-            }
-        }
-        $slugdb = Company::all();
-        foreach ($slugdb as $value)
-        {
-            if ($value->slug == $sub)
-            {
-                $data = "Subdomain ini sudah terpakai";
-                return json_encode($data);
-            }
-        }
-        $data = "Subdomain ini bisa dipakai";
-        return json_encode($data);
-    }
-
 }

@@ -38,10 +38,6 @@ Route::prefix('admin')->group(function () {
      */
     Route::patch('/myuser/{id}', 'User\MyUserController@update')->name('myuser-update');
     /**
-     * Activate Routes
-     */
-    // Route::patch('/activateuser/{id}/{act}', 'User\ActivateController@updateuser');
-    /**
      * Temporary Media Routes
      */
     Route::post('/media-temp', 'MediaTempController@store')->name('tempmedia-store');
@@ -202,5 +198,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/costde-edit/{id}/edit', 'Dev\CostDeController@edit')->name('costde-edit');
     Route::patch('/costde/{id}', 'Dev\CostDeController@update')->name('costde-update');
     Route::delete('/costde/{id}', 'Dev\CostDeController@delete')->name('costde-delete');
+     /**
+     * Activate Routes
+     */
+     Route::patch('/activateuser/{id}/{act}', 'ActivateController@updateuser');
+     Route::patch('/activateevent/{id}/{act}', 'ActivateController@updateevent');
 });
 

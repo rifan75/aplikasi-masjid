@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->boolean('active')->default(0);
-            $table->dateTime('email_verified_at');
+            $table->dateTime('email_verified_at')->useCurrent();
             $table->rememberToken();
             $table->string('api_token', 80)
                         ->unique()

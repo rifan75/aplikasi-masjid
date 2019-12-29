@@ -24,7 +24,7 @@ return [
     'create_lecture' => 'Jadwal Kajian',
     'create_resume' => 'Resume Kajian',
     'scholar' => 'Ustadz/ Ulama',
-    'finance' => 'Keuangan',
+    'finance' => 'Keuangan Masjid',
     'account_donation' => 'Akun Penerimaan',
     'account_cost' => 'Akun Pengeluaran',
     'finance_jurnal' => 'Jurnal Keuangan',
@@ -36,7 +36,7 @@ return [
     'my_profile' => 'Data Pribadi Saya',
     'profile' => 'Data Saya',
     'change_password' => 'Rubah Password',
-    'list_donation' => 'Daftar Penerima Bantuan',
+    'list_stakeholder' => 'Daftar Yg Berkepentingan',
     'list_mustahiq' => 'Daftar Mustahiq',
     'list_yatim' => 'Daftar Anak Yatim',
     'mosque' => 'Masjid',
@@ -47,10 +47,17 @@ return [
     'zakat' => 'Zakat',
     'infaq,shodaqoh' => 'Infaq, Shodaqoh',
     'record_event' => 'Rekam Kegiatan',
-    'record_donation' => 'Jurnal Donasi',
+    
     'record_infaq,shodaqoh' => 'Data Infaq & Shodaqoh',
     'development' => 'Pembangunan',
     'planning' => 'Deskripsi & Rencana Kerja',
     'progress' => 'Perkembangan',
     'data_mosque' => 'Data Masjid',
+
+    'journal_mosque' => 'Jurnal Keu Masjid',
+    'journal_ramadhan' => 'Jurnal Keu Ramadhan',
+    'journal_development' => 'Jurnal Pembangunan',
+
+    'journal_donation' => 'Jurnal Pemasukan',
+    'journal_cost' => 'Jurnal Pengeluaran',
 ];

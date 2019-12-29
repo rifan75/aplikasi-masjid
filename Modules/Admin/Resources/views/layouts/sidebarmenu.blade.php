@@ -17,11 +17,22 @@
         <ul class="treeview-menu">
           <li><a href="{{route('development-admin')}}">@lang('admin::sidebarmenu.planning')</a></li>
           <li><a href="{{route('progress-admin')}}">@lang('admin::sidebarmenu.progress')</a></li>
-          <li><a href="{{route('finde-admin')}}">@lang('admin::sidebarmenu.finance')</a></li>
+          <li><a href="{{route('finde-admin')}}">@lang('admin::sidebarmenu.journal_development')</a></li>
         </ul>
     </li>
     <li class="treeview">
-        <a href="#"><i class="fa fa-envelope-o"></i> <span>@lang('admin::sidebarmenu.infaq,shodaqoh') </span>
+        <a href="#"><i class="fa fa-envelope"></i> <span>@lang('admin::sidebarmenu.journal_mosque')</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="/admin/donade/Masjid">@lang('admin::sidebarmenu.journal_donation')</a></li>
+          <li><a href="/admin/costde/Masjid">@lang('admin::sidebarmenu.journal_cost')</a></li>
+        </ul>
+      </li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-glass"></i> <span>@lang('admin::sidebarmenu.list_stakeholder') </span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -29,15 +40,14 @@
         <ul class="treeview-menu">
           <li><a href="{{route('mustahiq')}}">@lang('admin::sidebarmenu.list_mustahiq')</a></li>
           <li><a href="{{route('yatim')}}">@lang('admin::sidebarmenu.list_yatim')</a></li>
-          <li><a href="/profile">@lang('admin::sidebarmenu.record_donation')</a></li>
         </ul>
     </li>
     <li>
-      <a href="/admin"><i class="fa fa-user"></i> <span>Dashboard</span></a>
+      <a href="/admin"><i class="fa fa-info-circle"></i> <span>Dashboard</span></a>
     </li>
       <li class="header" style="color:white">@lang('admin::sidebarmenu.master_data')</li>
       <li>
-      <a href="{{route('category')}}"><i class="fa fa-book"></i> <span>@lang('admin::sidebarmenu.category')</span></a>
+      <a href="{{route('category')}}"><i class="fa fa-th"></i> <span>@lang('admin::sidebarmenu.category')</span></a>
     </li>
       <li class="treeview">
         <a href="#"><i class="fa fa-money"></i> <span>@lang('admin::sidebarmenu.finance_data')</span>
@@ -67,7 +77,7 @@
       <a href="{{route('scholar')}}"><i class="fa fa-mortar-board"></i> <span>@lang('admin::sidebarmenu.scholar')</span></a>
     </li>
       <li class="treeview">
-          <a href="#"><i class="fa fa-info-circle"></i><span>@lang('admin::sidebarmenu.user')</span>
+          <a href="#"><i class="fa fa-user"></i><span>@lang('admin::sidebarmenu.user')</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>

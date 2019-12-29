@@ -67,19 +67,6 @@ class DonationsTableSeeder extends Seeder
                          konfirmasi atau melalui berita transfer'
             ],
             [
-                'name'=>'Kotak Amal (Shodaqoh/ Infaq) Ramadhan',
-                'type' => 'Masjid',
-                'form' => 'lock_box',
-                'contact' => [
-                    'incharge' => 'Izrail',
-                    'counter' => 'Musa',
-                    'witness1' => 'Khidir',
-                    'witness2' => 'Zulkarnaen',
-                ],
-                'note'=>'Harap selalu melakukan konfirmasi dan memberitahukan jenis donasinya saat 
-                         konfirmasi atau melalui berita transfer'
-            ],
-            [
                 'name'=>'Pembangunan Toilet/TPA & Turab Masjid (Transfer)',
                 'type' => 'Pembangunan',
                 'form' => 'direct_bank',
@@ -179,9 +166,9 @@ class DonationsTableSeeder extends Seeder
                 }
                 if ($donat->id==6)
                 {
-                    factory(DetailDonation::class,30)->create([
+                    factory(DetailDonation::class,70)->create([
                         'donations_id'=>$donat->id, 
-                        'note'=>'No. BA- /Al-Husna/Ktk-Ramadhan Tgl .......... Nama Keg.........',
+                        'note'=>'Pembangunan Toilet/TPA & Turab Masjid (Transfer)',
                         ]);
                 }
                 if ($donat->id==7)
@@ -192,13 +179,6 @@ class DonationsTableSeeder extends Seeder
                         ]);
                 }
                 if ($donat->id==8)
-                {
-                    factory(DetailDonation::class,70)->create([
-                        'donations_id'=>$donat->id, 
-                        'note'=>'Pembangunan Toilet/TPA & Turab Masjid (Transfer)',
-                        ]);
-                }
-                if ($donat->id==9)
                 {
                     factory(DetailDonation::class,70)->create([
                         'donations_id'=>$donat->id, 

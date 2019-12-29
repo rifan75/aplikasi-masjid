@@ -39,11 +39,6 @@ class CostTableSeeder extends Seeder
                 'note'=>'biaya yang berkaitan penyelenggaraan kegiatan selain Ramadhan'
             ],
             [
-                'name'=>'Biaya Kegiatan Ramadhan',
-                'type' => 'Masjid',
-                'note'=>'biaya yang berkaitan penyelenggaraan kegiatan Ramadhan'
-            ],
-            [
                 'name'=>'Biaya Tukang',
                 'type' => 'Pembangunan',
                 'note'=>'biaya yang berkaitan Toilet/TPA & Turab Masjid'
@@ -101,12 +96,6 @@ class CostTableSeeder extends Seeder
                         ]);
                 }
                 if ($expend->id==7)
-                {
-                    factory(DetailCost::class,70)->create([
-                        'cost_id'=>$expend->id, 
-                        ]);
-                }
-                if ($expend->id==8)
                 {
                     factory(DetailCost::class,70)->create([
                         'cost_id'=>$expend->id, 

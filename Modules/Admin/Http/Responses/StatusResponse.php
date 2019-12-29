@@ -4,7 +4,7 @@ namespace Modules\Admin\Http\Responses;
 use Illuminate\Contracts\Support\Responsable;
 
 
-class ActivateResponse implements Responsable
+class StatusResponse implements Responsable
 {
     public function __construct($model, $id, $act)
     {
@@ -18,9 +18,9 @@ class ActivateResponse implements Responsable
         $model = $this->model->where('id',$this->id)->firstorFail();
         
         if($this->act==0){
-            $model->update(['active' => 1]);
+            $model->update(['status' => 1]);
         }else{
-            $model->update(['active' => 0]);
+            $model->update(['status' => 0]);
         }
     }
 }

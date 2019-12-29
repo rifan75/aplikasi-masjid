@@ -47,31 +47,13 @@ class LoginController extends Controller
         
     }
 
-    // protected function validateLogin(Request $request)
-    // {
-        
-    //     $email= \Modules\User\Entities\User::whereHas('roles', function($q) {
-    //                         $q->where('name','Owner');
-    //             })->pluck('email');
-
-    //     $request->validate([
-    //         $this->username() => [
-    //             'required',
-    //             Rule::exists('users')->where(function ($query) use ($email) {
-    //                 $query->whereIn('email', $email);
-    //             }),
-    //         ],
-    //         'password' => 'required|string',
-    //     ]);
-    // }
-
-    /* public function authenticated(Request $request, $user)
+    public function authenticated(Request $request, $user)
     {
-        if (!$user->verified) {
+        if (!$user->active) {
             auth()->logout();
-            return back()->with('warning', 'Anda perlu mengkonfirmasi email anda. Kami telah mengirimkan link aktifasi,
-            mohon cek email anda kembali.');
+            return back()->with('warning', 'Akun anda belum diaktifasi, harap hubungi pengurus masjid 
+            untuk mengaktivasi akun anda,');
         }
-        return redirect()->route('home-account');
-    } */
+        return redirect()->route('home');
+    } 
 }

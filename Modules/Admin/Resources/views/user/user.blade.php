@@ -303,7 +303,7 @@ function editAct(id,act) {
   }).then((result) => {
 		if (result.value) {
       $.ajax({
-        url : "/activateuser/"+id+"/"+act,
+        url : "/admin/activateuser/"+id+"/"+act,
         type : "PATCH",
         data: {_method: 'UPDATE'},
         beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},

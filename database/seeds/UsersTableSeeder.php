@@ -96,7 +96,7 @@ class UsersTableSeeder extends Seeder
             ['name'=>'Masjid','note'=>'Pemasukan dan Pengeluaran Masjid'],
             ['name'=>'Pembangunan','note'=>'Pemasukan dan Pengeluaran Pembangunan'],
             ['name'=>'Zakat','note'=>'Pemasukan dan Pengeluaran Zakat'],
-            ['name'=>'Hibah/Waqah','note'=>'Pemasukan dan Pengeluaran Hibah/ Waqah'],
+            ['name'=>'Ramadhan','note'=>'Pemasukan dan Pengeluaran Ramadhan'],
             ['name'=>'Lainnya','note'=>'Pemasukan dan Pengeluaran Lainnya'],
         ];
 
