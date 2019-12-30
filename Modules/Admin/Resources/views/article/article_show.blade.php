@@ -12,7 +12,7 @@
                 <div class="col-md-3" id="agree">
                 {!!$article->published?'<h3>Published</h3>':'<h3>Unpublish</h3>'!!}
                 <br>
-                @if(!$article->agree->contains('user_id',Auth::user()->id))
+                @if($article->user_id != Auth::user()->id && !$article->agree->contains('user_id',Auth::user()->id))
                 <a href="#" onclick="publishArt('1');" id="createpublishbutton" type="button" class=" btn-sm btn-success" style="margin-bottom:5px">Publish</a>
                 <a href="#" onclick="publishArt('0');" id="createnopublishbutton" type="button" class=" btn-sm btn-danger" style="margin-bottom:5px">No Publish</a><br><br>
                 @endif
@@ -51,7 +51,7 @@
                     </div>
                     <br>
                     <div style="color:black">
-                    {{$article->content}}
+                    {!!$article->content!!}
                     </div>
                 </div>
             <div><br>

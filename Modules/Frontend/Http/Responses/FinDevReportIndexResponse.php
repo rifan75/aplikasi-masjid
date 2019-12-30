@@ -1,17 +1,21 @@
 <?php
-namespace Modules\Admin\Http\Responses\Dev;
+namespace Modules\Frontend\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Admin\Entities\Donation;
 use Modules\Admin\Entities\DetailDonation;
 use Modules\Admin\Entities\Cost;
 use Modules\Admin\Entities\DetailCost;
+use Modules\Admin\Entities\Dev;
 
-class FinDevIndexResponse implements Responsable
+class FinDevReportIndexResponse implements Responsable
 {
 
     public function toResponse($request)
     {
+        $slug = $request->slug;
+        $dev = Dev::where('slug',$slug)->first();
+        $datenow = \GeniusTS\HijriDate\Date::now()->format('l, d F Y');
         $donations = Donation::where ('type','Pembangunan')->get();
         $donations_id = Donation::where ('type','Pembangunan')->pluck('id')->toArray();
         $incometotal =  DetailDonation::whereIn('donations_id',$donations_id)->get()->sum('amount');
@@ -35,8 +39,9 @@ class FinDevIndexResponse implements Responsable
             
         $remaining = $incometotal - $costtotal;
 
-        return view('admin::dev.dev_finance',
-              compact('incomeSrc','income','incometotal','costSrc','costval','costtotal','remaining'));
+        return view('frontend::dev.finance_report',
+              compact('incomeSrc','income','incometotal','costSrc','costval',
+                        'costtotal','remaining','datenow','dev'));
     }
 
 }

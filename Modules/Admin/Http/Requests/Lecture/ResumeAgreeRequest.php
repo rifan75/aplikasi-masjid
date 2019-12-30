@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Admin\Http\Requests;
+namespace Modules\Admin\Http\Requests\Lecture;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 use Illuminate\Validation\Rule;
 
-class MosqueRequest extends FormRequest
+class ResumeAgreeRequest extends FormRequest
 {
     use SanitizesInput;
     /**
@@ -26,12 +26,9 @@ class MosqueRequest extends FormRequest
     public function rules()
     {
         return [
-        'name' => 'required',
-        'address' => 'required',
-        'chief' => 'required',
-        'history' => 'required',
-        'picture' => 'mimes:jpeg,bmp,png|max:1024',
-        ];
+            'resume_id' => 'required',
+            'agree' => 'required',
+            ];
     }
     /**
      * Filter Data and Modif that apply to the request.

@@ -11,6 +11,7 @@ class Mosque extends Model
     use SoftDeletes;
     protected $table = "mosque";
     protected $casts=[
+        'contact'=>'array',
         'organizer'=>'array'
     ];
     protected $fillable = [

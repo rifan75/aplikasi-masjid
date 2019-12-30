@@ -8,7 +8,7 @@
 <html lang="zxx">
 
 <head>
-    <title>{{config('app.name')}}</title>
+    <title>{{$mosque->name}}</title>
 
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,7 +63,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="navbar-brand">
                     <h1><a class="navbar-brand" href="{{ route('home') }}">
-                    {{config('app.name')}}
+                    {{$mosque->name}}
                     </a></h1>
                     <h7>{{$datenow}}</h7>
                     </div>
@@ -88,10 +88,10 @@
                                 <a class="nav-link" href="{{ route('indexarticle') }}">Artikel</a>
                             </li>
                             <li class="nav-item cool">
-                                <a class="nav-link" href="">Kegiatan</a>
+                                <a class="nav-link" href="{{ route('showevent') }}">Kegiatan</a>
                             </li>
                             <li class="nav-item cool">
-                                <a class="nav-link" href="">Pembangunan</a>
+                                <a class="nav-link" href="{{ route('showdev') }}">Pembangunan</a>
                             </li>
                         </ul>
                     </div>
@@ -167,9 +167,9 @@
                             <h3 class="mb-4">Alamat</h3>
                             <address class="mb-0">
 							<p class="mb-2"><i class="fas fa-map-marker-alt"></i> 
-                            Griya Suradita Indah (Perum Korpri)<br> Suradita Cisauk <br>Tangerang, Banten, Indonesia.
+                            {{$mosque->contact['Address']}}<br>{{$mosque->contact['City']}}, {{$mosque->contact['Country']}}.
                             </p>
-							<p><i class="far mr-1 fa-envelope-open"></i> <a href="mailto:info@example.com">info@example.com</a></p>
+							<p><i class="far mr-1 fa-envelope-open"></i> <a href="mailto:info@example.com">{{$mosque->contact['Email']}}</a></p>
 						</address>
                         </div>
                 </div>

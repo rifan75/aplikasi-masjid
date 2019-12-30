@@ -21,7 +21,7 @@ class LectureIndexResponse implements Responsable
     }
     public function DataTable()
     {
-        $lectures =  Lecture::all()->sortByDesc('type')->sortBy('status');
+        $lectures =  Lecture::where('status',true)->get()->sortByDesc('type')->sortBy('status');
         
         $no = 0;
         $data = array();

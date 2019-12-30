@@ -22,7 +22,7 @@ class MustahiqFrontendResponse implements Responsable
 
     public function DataTable()
     {
-        $mustahiqs =  Mustahiq::orderBy('created_at','DESC')->get();
+        $mustahiqs =  Mustahiq::where('status',true)->orderBy('created_at','DESC')->get();
         
         $no = 0;
         $data = array();

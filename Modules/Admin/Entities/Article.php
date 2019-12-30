@@ -18,6 +18,7 @@ class Article extends Model implements HasMedia
         'user_id',
         'category',
         'title',
+        'published',
         'slug',
         'content',
     ];

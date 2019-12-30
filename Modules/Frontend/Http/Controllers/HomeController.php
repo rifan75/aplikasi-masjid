@@ -4,8 +4,7 @@ namespace Modules\Frontend\Http\Controllers;
 
 use Modules\Frontend\Entities\FridaySchedule;
 use Modules\Frontend\Entities\Mosque;
-use Modules\Frontend\Entities\Kajianku;
-use Modules\Frontend\Entities\Artikel;
+use Modules\Frontend\Entities\Lecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +15,9 @@ class HomeController extends Controller
     {
       $mosque = Mosque::all()->first();
       $datenow = \GeniusTS\HijriDate\Date::now()->format('l, d F Y');
+      $lectures =  Lecture::where('status',true)->orderBy('id', 'desc')->paginate(2);
       
-      return view('frontend::home',compact('datenow','mosque'));
+      return view('frontend::home',compact('datenow','mosque','lectures'));
     }
 
     public function login()

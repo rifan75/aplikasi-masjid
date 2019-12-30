@@ -16,7 +16,7 @@
     <div class="form-group col-md-6">
         <div class="form-group col-md-12" id="leveldiv">
             <p>Size Max : 1 MB<p>
-            <img id="img_mosque" src="{{Auth::user()->getFirstMediaUrl('picture')==null ? asset('images/picture.jpg') : Auth::user()->getFirstMediaUrl('picture')}}" class="img-responsive" height="200px" width="200px">
+            <img id="img_user" src="{{Auth::user()->getFirstMediaUrl('picture')==null ? asset('images/picture.jpg') : Auth::user()->getFirstMediaUrl('picture')}}" class="img-responsive" height="200px" width="200px">
                 <br>
             <input type="file" name="picture" id="picture">
             <p style="color:red">{{ $errors->first('picture') }}</p>

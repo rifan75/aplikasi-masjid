@@ -49,4 +49,9 @@ class Event extends Model
     {  
         $this->attributes['date'] = DateTime::createFromFormat('d M Y', $value)->format('Y-m-d');
     }
+
+    public function detailevent()
+    {
+        return $this->hasOne('Modules\Admin\Entities\DetailEvent','event_id','id');
+    }
 }

@@ -32,7 +32,7 @@
                   <p style="color:red">{{ $errors->first('name') }}</p>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
               <div class="form-group col-md-12" id="leveldiv">
                 <p>Size Max : 1 MB<p>
                 <img id="img_mosque" src="{{$mosque->getFirstMediaUrl('mosque')==null ? asset('images/al-husna-luar-crop.jpg') : $mosque->getFirstMediaUrl('mosque')}}" style="margin-right:20px" width="100%">
@@ -44,7 +44,23 @@
 					          </span>
 					        @endif
               </div>
+              </div> -->
+              <h3>@lang("admin::mosque.implementer")</h3>
+              <div class="row">
+              <div class="form-group col-md-12">
+                <label for="imam" class=" control-label">@lang('admin::mosque.imam')</label>
+                <input id="imam" type="text" class="form-control" name="imam" value="{{ $mosque->organizer['imam'] }}" required>
+                <p style="color:red">{{ $errors->first('imam') }}</p>
               </div>
+            </div>
+              <div class="row">
+              <div class="form-group col-md-12">
+                <label for="marbout" class=" control-label">@lang('admin::mosque.marbout')</label>
+                <input id="marbout" type="text" class="form-control" name="marbout" value="{{ $mosque->organizer['marbout'] }}">
+                <p style="color:red">{{ $errors->first('marbout') }}</p>
+              </div>
+              </div>
+          
               <div class="row">
                 <div class="form-group col-md-12">
                 <label for="history" class=" control-label">@lang("admin::mosque.history") : </label>
@@ -129,21 +145,7 @@
           <p style="color:red">{{ $errors->first('security') }}</p>
           </div>
           </div>
-          <h3>@lang("admin::mosque.implementer")</h3>
-          <div class="row">
-          <div class="form-group col-md-12">
-            <label for="imam" class=" control-label">@lang('admin::mosque.imam')</label>
-            <input id="imam" type="text" class="form-control" name="imam" value="{{ $mosque->organizer['imam'] }}" required>
-            <p style="color:red">{{ $errors->first('imam') }}</p>
-          </div>
-        </div>
-          <div class="row">
-          <div class="form-group col-md-12">
-            <label for="marbout" class=" control-label">@lang('admin::mosque.marbout')</label>
-            <input id="marbout" type="text" class="form-control" name="marbout" value="{{ $mosque->organizer['marbout'] }}">
-            <p style="color:red">{{ $errors->first('marbout') }}</p>
-          </div>
-          </div>
+         
           </div>
           <div class="row">
             <div class="form-group col-md-12">
@@ -168,7 +170,7 @@
 @section('footer_scripts')
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script type="text/javascript">
-$('#history').summernote({height: 350});
+$('#history').summernote({height: 450});
 function readURL(input) {
               if (input.files && input.files[0]) {
                   var reader = new FileReader();

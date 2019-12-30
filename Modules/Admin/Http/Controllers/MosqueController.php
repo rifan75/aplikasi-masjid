@@ -41,7 +41,12 @@ class MosqueController extends Controller
 
     public function update(MosqueRequest $request, ProcessMosqueRepoInterface $repo, $id)
     {
-        $repo->updateMosqueDefault($request, $id);
+        $mosque = $repo->updateMosqueDefault($request, $id);
+
+        if ($request->hasFile('picture')) 
+        {
+          $mosque->addMediaFromRequest('picture')->toMediaCollection('mosque','s3');
+        }
 
         return new MosqueProcessResponse();
     }

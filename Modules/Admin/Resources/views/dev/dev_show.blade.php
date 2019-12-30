@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-10" style="color:black">
                 <a href="{{route('development-admin')}}" id="createbutton" type="button" class=" btn-sm btn-primary" style="margin-bottom:5px">@lang("admin::dev.dev_back")</a><br><br>
-                <h1>{{$dev->name}}</h1><br>
+                <h3>{{$dev->name}}</h3><br>
                 {!! $dev->description !!}
                     
                 <br><br>

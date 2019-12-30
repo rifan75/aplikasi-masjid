@@ -6,7 +6,7 @@ use Modules\Frontend\Entities\Mosque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Modules\Frontend\Http\Responses\FinanceReportResponse;
+use Modules\Frontend\Http\Responses\FinanceReportIndexResponse;
 use Modules\Frontend\Http\Responses\MustahiqFrontendResponse;
 use Modules\Frontend\Http\Responses\YatimFrontendResponse;
 
@@ -20,7 +20,7 @@ class MosqueController extends Controller
       return view('frontend::mosque.caretaker',compact('datenow','mosque'));
     }
 
-    public function lapkeu(FinanceReportResponse $response)
+    public function lapkeu(FinanceReportIndexResponse $response)
     {
       return $response;
     }

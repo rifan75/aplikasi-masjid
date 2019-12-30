@@ -92,10 +92,10 @@
                                 <a class="nav-link" href="{{ route('indexarticle') }}">Artikel</a>
                             </li>
                             <li class="nav-item cool">
-                                <a class="nav-link" href="">Kegiatan</a>
+                                <a class="nav-link" href="{{ route('showevent') }}">Kegiatan</a>
                             </li>
                             <li class="nav-item cool">
-                                <a class="nav-link" href="">Pembangunan</a>
+                                <a class="nav-link" href="{{ route('showdev') }}">Pembangunan</a>
                             </li>
                         </ul>
                     </div>

@@ -49,3 +49,12 @@ Route::get('/mosque', 'MosqueController@index')->name('mosque');
 Route::get('/finance-report', 'MosqueController@lapkeu')->name('finance-report');
 Route::get('/mustahiq-list', 'MosqueController@mustahiq')->name('mustahiq-list');
 Route::get('/yatim-list', 'MosqueController@yatim')->name('yatim-list');
+
+/*--Event Route--*/
+Route::get('/event', 'EventController@index')->name('showevent');
+Route::get('/event/{slug}', 'EventController@eventlain')->name('showeventlain');
+
+/*--Development Route--*/
+Route::get('/development', 'DevFrontController@index')->name('showdev');
+Route::get('/development/{slug}/lapkeu', 'DevFrontController@lapkeu')->name('showdevlapkeu');
+Route::get('/devprogress/{slug}/{date}', 'DevFrontController@progress')->name('showdevprogress');

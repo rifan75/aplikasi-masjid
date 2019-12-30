@@ -125,6 +125,20 @@
 <script type="text/javascript">
 var g = $('#genderhidden').val();
 $('#gender option[value= "'+g+'"]').prop("selected",true);
+function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      $('#img_user').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+
+              }
+          }
+$('#picture').change(function(){
+    readURL(this);
+});
+$('#userform')[0].reset();
 </script>
 @include('flash')
 @stop

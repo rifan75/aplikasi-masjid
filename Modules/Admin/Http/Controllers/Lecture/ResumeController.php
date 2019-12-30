@@ -9,6 +9,7 @@ use Modules\Admin\Http\Responses\Lecture\ResumeShowResponse;
 use Modules\Admin\Http\Responses\Lecture\ResumeEditResponse;
 use Modules\Admin\Http\Responses\Lecture\ResumeProcessResponse;
 use Modules\Admin\Http\Requests\Lecture\ResumeRequest;
+use Modules\Admin\Http\Requests\Lecture\ResumeAgreeRequest;
 use Modules\Admin\Http\Repos\Lecture\ProcessResumeRepoInterface;
 
 class ResumeController extends Controller
@@ -85,5 +86,19 @@ class ResumeController extends Controller
     public function delete(ProcessResumeRepoInterface $repo, $id)
     {
         $repo->deleteResumeDefault($id);
+    }
+
+    public function createagree(ResumeAgreeRequest $request,ProcessResumeRepoInterface $repo)
+    {
+        $resume = $repo->createagreeResumeDefault($request);
+
+        return response()->json();
+    }
+
+    public function updateagree(ProcessResumeRepoInterface $repo,$id,$artId)
+    {
+        $resume = $repo->updateagreeResumeDefault($id,$artId);
+
+        return response()->json();
     }
 }

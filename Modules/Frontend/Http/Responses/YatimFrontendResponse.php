@@ -22,7 +22,7 @@ class YatimFrontendResponse implements Responsable
 
     public function DataTable()
     {
-        $yatims =  Yatim::orderBy('created_at','DESC')->get();
+        $yatims =  Yatim::where('status',true)->orderBy('created_at','DESC')->get();
         
         $no = 0;
         $data = array();

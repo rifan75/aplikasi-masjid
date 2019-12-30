@@ -6,52 +6,59 @@
             <div class="row">
                 <div class="col-md-11" style="color:black">
                 <h1>Laporan Keuangan Masjid Al-Husna</h1><br>
-                <b>Laporan Keuangan Masjid Al-Husna Per Jumat tanggal ....</b><br><br>
+                <b>Laporan Keuangan Masjid Al-Husna Per Hari {{$datenowgeo}}</b><br><br>
                 <div>
-                <table>
+                <table style="width:100%">
                     <tr>
-                        <td>Sisa Cash Masjid Sebelumnya</td><td>:</td><td>Rp.</td><td>10000</td>
+                        <td style="width:60%">Sisa Dana Masjid Jum'at Sebelumnya {{$fridaybeftrans}}</td>
+                        <td style="width:10%">:</td
+                        ><td style="width:10%">Rp.</td>
+                        <td style="width:20%;text-align:right"> {{number_format($remainingbef,0,',','.')}}</td>
+                    </tr>
+                    <tr>
+                        <td></td><td>&nbsp;</td>
+                        <td></td><td><b></b></td>
                     </tr>
                     <tr>
                         <td>Penerimaan :</td><td></td>
                         <td></td><td></td>
                     </tr>
+                    @foreach($incomeSrc as $key => $donation)
                     <tr>
-                        <td  style="padding-left:5px; width:50%">- Kotak Amal Jumat</td>
-                        <td style="width:5%">:</td>
-                        <td style="width:10%">Rp.</td><td style="width:25%">10000</td>
-                        </tr>
+                        <td  style="padding-left:5px; width:50%">- {{$donation}}</td>
+                        <td style="width:10%">:</td>
+                        <td style="width:10%">Rp.</td><td style="width:20%;text-align:right">{{number_format($income[$key], 0, ',', '.')}}</td>
+                    </tr>
+                    @endforeach
                     <tr>
-                        <td style="padding-left:5px">- Kotak Amal Jumat</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
-                        </tr>
-                    <tr>
-                        <td style="padding-left:5px">- Kotak Amal Jumat</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
+                        <td><b>Jumlah Pemasukan Minggu Ini</b></td><td>:</td>
+                        <td>Rp.</td><td style="text-align:right"><b>{{number_format(array_sum($income), 0, ',', '.')}}</b></td>
                     </tr>
                     <tr>
-                        <td>Jumlah Pemasukan Minggu Ini</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
+                        <td></td><td>&nbsp;</td>
+                        <td></td><td><b></b></td>
                     </tr>
                     <tr>
                         <td>Pengeluaran :</td><td></td>
                         <td></td><td></td>
                     </tr>
+                    @foreach($costSrc as $key => $costName)
                     <tr>
-                        <td style="padding-left:5px">- Kotak Amal Jumat</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
-                        </tr>
+                        <td style="padding-left:5px">- {{$costName}}</td><td>:</td>
+                        <td>Rp.</td><td style="text-align:right">{{number_format($costval[$key], 0, ',', '.')}}</td>
+                    </tr>
+                    @endforeach
                     <tr>
-                        <td style="padding-left:5px">- Kotak Amal Jumat</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
+                        <td><b>Jumlah Pengeluaran Minggu Ini</b></td><td>:</td>
+                        <td>Rp.</td><td style="text-align:right"><b>{{number_format(array_sum($costval), 0, ',', '.')}}</b></td>
                     </tr>
                     <tr>
-                        <td>Jumlah Pengeluaran Minggu Ini</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
+                        <td></td><td>&nbsp;</td>
+                        <td></td><td><b></b></td>
                     </tr>
                     <tr>
-                        <td>Sisa Cash Masjid Per Jumat tanggal</td><td>:</td>
-                        <td>Rp.</td><td>10000</td>
+                        <td>Sisa Dana Masjid Per Hari {{$datenowgeo}}</td><td>:</td>
+                        <td>Rp.</td><td style="text-align:right"><b>{{number_format($remaining,0,',','.')}}</b></td>
                     </tr>
                 </table>        
                 </div>

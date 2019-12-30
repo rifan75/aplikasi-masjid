@@ -9,7 +9,7 @@ class ArticleAgreeProcessResponse implements Responsable
 
     public function toResponse($request)
     {
-    //
+        //
        
     }
 }

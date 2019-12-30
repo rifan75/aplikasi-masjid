@@ -137,6 +137,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/resume/{id}/edit', 'Lecture\ResumeController@edit')->name('resume-edit');
     Route::patch('/resume/{id}', 'Lecture\ResumeController@update')->name('resume-update');
     Route::delete('/resume/{id}', 'Lecture\ResumeController@delete')->name('resume-delete');
+    Route::post('/resumeagree', 'Lecture\ResumeController@createagree')->name('resumeagree');
+    Route::patch('/resumeagree/{id}/{artId}', 'Lecture\ResumeController@updateagree')->name('resumeagree-update');
 
     /**
      * Article Routes

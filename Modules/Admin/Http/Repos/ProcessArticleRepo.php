@@ -40,8 +40,12 @@ class ProcessArticleRepo implements ProcessArticleRepoInterface
             'published' => false,
         ];
    
+        $agreepublish = ArticleAgree::where('article_id',$id);
         $article = Article::where('id',$id)->first();
+
         $article->update($data);
+        $agreepublish->delete();
+
         return $article;   
     }
 
@@ -63,19 +67,17 @@ class ProcessArticleRepo implements ProcessArticleRepoInterface
    
         ArticleAgree::create($data);
 
-        $agreepublish = ArticleAgree::where('article_id',$articleData->article_id)->where('agree',true)->get()->count();
+        $agreepublish = ArticleAgree::where('article_id',$articleData->article_id)->where('agree',true)->count();
+        $article = Article::where('id',$articleData->article_id)->first();
 
-        if($agreepublish > 3)
+        if($agreepublish >= 3)
         {
-            $published = ['published' => true];
+            $article->update(['published' => true]);
         }
         else
         {
-            $published = ['published' =>false];
+            $article->update(['published' =>false]);
         }
-
-        $article = Article::where('id',$articleData->article_id)->first();
-        $article->update($published);
 
         return $article;
     }
@@ -92,19 +94,17 @@ class ProcessArticleRepo implements ProcessArticleRepoInterface
             $agree->update(['agree' => 0]);
         }
 
-        $agreepublish = ArticleAgree::where('article_id',$artId)->where('agree',true)->get()->count();
-
-        if($agreepublish > 3)
+        $agreepublish = ArticleAgree::where('article_id',$artId)->where('agree',true)->count();
+        $article = Article::where('id',$artId)->first();
+     
+        if($agreepublish >= 3)
         {
-            $published = ['published' => true];
+            $article->update(['published' => true]);
         }
         else
         {
-            $published = ['published' =>false];
+            $article->update(['published' =>false]);
         }
-
-        $article = Article::where('id',$artId)->first();
-        $article->update($published);
 
         return $article;
     }

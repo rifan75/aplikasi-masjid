@@ -45,7 +45,7 @@ class ArticleIndexResponse implements Responsable
                         <a href='#' onclick='deleteForm(\"".$article->id."\")' type='submit'><i class='fa fa-trash'></i></a>";
         }else{
 
-            $row['action'] = "Setuju/Tdk Setuju";
+            $row['action'] = "--";
         }
             $data[] = $row;
         }

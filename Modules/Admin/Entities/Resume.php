@@ -21,6 +21,7 @@ class Resume extends Model implements HasMedia
         'lecture_id',
         'scholar',
         'date',
+        'published',
         'title',
         'slug',
         'video',
@@ -91,5 +92,10 @@ class Resume extends Model implements HasMedia
     public function lecture()
     {
         return $this->belongsTo('Modules\Admin\Entities\Lecture','lecture_id','id');
+    }
+
+    public function agree()
+    {
+        return $this->hasMany('Modules\Admin\Entities\ResumeAgree','resume_id','id');
     }
 }

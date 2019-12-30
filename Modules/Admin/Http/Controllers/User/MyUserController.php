@@ -42,7 +42,7 @@ class MyUserController extends Controller
 
     public function update(MyUserRequest $request, ProcessMyUserRepoInterface $repo, $id)
     {
-        $repo->updateMyUserDefault($request, $id);
+        $user = $repo->updateMyUserDefault($request, $id);
 
         if ($request->hasFile('picture')) 
         {
